@@ -1,0 +1,47 @@
+﻿@model List<Customer>
+@{ ViewBag.Title = "Customer Manager";
+    ViewBag.Heading = "Customer Manager";
+    ViewBag.Desc = "Manage customer information";
+}
+
+<body>
+    <div class="container-lg">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-12"><h2 class="subHeading">Customer Manager</h2></div>
+                        <div class="col-sm-8"></div>
+                        <div id="addNewBtn" class="col-sm-4">
+                            <a type="button" class="fBtn btn btn-info add-new" asp-controller="Customer" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="font">Name</th>
+                            <th class="font">Email</th>
+                            <th class="font">City</th>
+                            <th class="font">Modify</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var customer in Model)
+                        {
+                            <tr>
+                                <td>@customer.FirstName  @customer.LastName</td>
+                                <td>@customer.Email</td>
+                                <td>@customer.City</td>
+                                <td>
+                                    <a class="edit" title="Edit" data-toggle="tooltip" asp-controller="Customer" asp-action="Edit" asp-route-slug="@customer.Slug" asp-route-id="@customer.CustomerId"><i class="material-icons">&#xE254;</i></a>
+                                    <a class="delete" title="Delete" data-toggle="tooltip" asp-controller="Customer" asp-action="Delete" asp-route-slug="@customer.Slug" asp-route-id="@customer.CustomerId"><i class="material-icons">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

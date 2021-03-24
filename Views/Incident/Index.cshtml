@@ -1,0 +1,45 @@
+﻿@model List<Incident>
+@{
+    ViewBag.Title = "Incident Manager";
+    ViewBag.Heading = "Incident Manager";
+    ViewBag.Desc = "Manage incident information";
+}
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-12"><h2 class="subHeading">Incident Manager</h2></div>
+                <div class="col-sm-8"></div>
+                <div id="addNewBtn" class="col-sm-4">
+                    <a class="fBtn btn btn-info add-new" asp-controller="Incident" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="font">Title</th>
+                    <th class="font">Customer</th>
+                    <th class="font">Product</th>
+                    <th class="font">Date Opened</th>
+                    <th class="font">Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var incident in Model)
+                {
+                    <tr>
+                        <td>@incident.Title</td>
+                        <td>@incident.Customer.FirstName @incident.Customer.LastName</td>
+                        <td>@incident.Product.Name</td>
+                        <td>@incident.DateOpened.ToString("MM'/'dd'/'yyyy")</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip" asp-controller="Incident" asp-action="Edit" asp-route-slug="@incident.Slug" asp-route-id="@incident.IncidentId"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip" asp-controller="Incident" asp-action="Delete" asp-route-slug="@incident.Slug" asp-route-id="@incident.IncidentId"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

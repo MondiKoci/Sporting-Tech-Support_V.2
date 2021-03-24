@@ -1,0 +1,48 @@
+﻿@model List<Product>
+@{
+    ViewBag.Title = "Product Manager";
+    ViewBag.Heading = "Product Manager";
+    ViewBag.Desc = "Manage product information";
+}
+
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-12"><h2 class="subHeading">Product Manager</h2></div>
+                <div class="col-sm-8"></div>
+                <div id="addNewBtn" class="col-sm-4">
+                    <a class="fBtn btn btn-info add-new" asp-controller="Product" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="font">Code</th>
+                    <th class="font">Name</th>
+                    <th class="font">Price</th>
+                    <th class="font">Release Date</th>
+                    <th class="font">Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Code</td>
+                        <td>@product.Name</td>
+                        <td>@product.Price.ToString("C")</td>
+                        <td>@product.ReleaseDate.ToString("MM'/'dd'/'yyyy")</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip" asp-controller="Product" asp-action="Edit" asp-route-slug="@product.Slug" asp-route-id="@product.ProductId"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip" asp-controller="Product" asp-action="Delete" asp-route-slug="@product.Slug" asp-route-id="@product.ProductId"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

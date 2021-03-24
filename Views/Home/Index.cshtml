@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    ViewBag.Heading = "SportsPro Technical Support";
+    ViewBag.Desc = "Sports management software for the sports enthusiast";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <div class="wrap">
+
+        <main>
+            <div class="mainContents" id="homeContents">
+                <div class="container">
+                    <div id="adminMenu" class="homeMenu">
+                        <h2 class="subHeading">Admin</h2>
+                        <a href="/products">Manage Products</a>
+                        <a href="/technicians">Manage Technicians</a>
+                        <a href="/customers">Manage Customers</a>
+                        <a href="/incidents">Manage Incidents</a>
+                        <a href="#">Manage Registrations</a> <!-- LINK NEEDED -->
+                    </div>
+                    <div id="techniciansMenu" class="homeMenu">
+                        <h2 class="subHeading">Technicians</h2>
+                        <a href="/incidents">Update Incident</a> <!-- LINK NEEDED -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

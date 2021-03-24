@@ -1,0 +1,24 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Delete";
+}
+
+<body>
+    <div class="wrap">
+        <main>
+            <form asp-action="Delete" method="post">
+                <div class="mainContents">
+                    <div class="container">
+                        <h2 class="subHeading">Confirmation</h2>
+                        <p id="deleteMessage">Are you sure you want to delete @Model.Name? By selecting yes, you are deleting the item you selected.</p>
+                        <div>
+                            <input type="hidden" asp-for="ProductId" />
+                            <button class="fBtn" type="submit">Yes</button>
+                            <a class="fBtn" asp-action="Index">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>

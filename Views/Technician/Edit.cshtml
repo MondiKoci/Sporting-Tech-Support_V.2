@@ -1,0 +1,35 @@
+﻿@model Technician
+@{
+    ViewBag.Title = "Edit Technician";
+    ViewBag.Heading = "Edit Technician";
+    ViewBag.Desc = "Please fill out technician information";
+}
+
+<form class="addEditForm" asp-action="Edit" method="post">
+    <h2 class="subHeading">Technician information</h2>
+    <div>
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" placeholder="e.g. username@domain.com" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Phone">Phone</label>
+        <input type="tel" asp-for="Phone" placeholder="e.g. 123-123-1234" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div>
+        <input type="hidden" asp-for="TechnicianId" />
+        <button class="fBtn" type="submit">@ViewBag.Action</button>
+        <a class="fBtn" asp-controller="Technician" asp-action="Index">Cancel</a>
+    </div>
+</form>

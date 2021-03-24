@@ -1,0 +1,44 @@
+﻿@model List<Technician>
+@{
+    ViewBag.Title = "Technician Manager";
+    ViewBag.Heading = "Technician Manager";
+    ViewBag.Desc = "Manage technician information";
+}
+<div class="table-responsive">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-12"><h2 class="subHeading">Technician Manager</h2></div>
+                <div class="col-sm-8"></div>
+                <div id="addNewBtn" class="col-sm-4">
+                    <a class="fBtn btn btn-info add-new" asp-controller="Technician" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="font">Name</th>
+                    <th class="font">Email</th>
+                    <th class="font">Phone</th>
+                    <th class="font">Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var technician in Model)
+                {
+                    <tr>
+                        <td>@technician.FirstName @technician.LastName</td>
+                        <td>@technician.Email</td>
+                        <td><a href="tel:+@technician.Phone">@technician.Phone</a></td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip" asp-controller="Technician" asp-action="Edit" asp-route-slug="@technician.Slug" asp-route-id="@technician.TechnicianId"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip" asp-controller="Technician" asp-action="Delete" asp-route-slug="@technician.Slug" asp-route-id="@technician.TechnicianId"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

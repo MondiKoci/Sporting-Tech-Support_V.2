@@ -1,0 +1,41 @@
+﻿@model Customer
+@{
+    ViewBag.Title = "Delete";
+}
+
+<body>
+    <div class="wrap">
+        <main>
+            <form asp-action="Delete" method="post">
+                <div class="mainContents">
+                    <div class="container">
+                        <h2 class="subHeading">Confirmation</h2>
+                        @if (ViewBag.Warning == 0)
+                        {
+                            <p id="deleteMessage">Are you sure you want to delete the customer @Model.FirstName @Model.LastName?</p>
+                            <div>
+                                <input type="hidden" asp-for="CustomerId" />
+                                <button class="fBtn" type="submit">Yes</button>
+                                <a class="fBtn" asp-action="Index">Cancel</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <p id="deleteMessage">
+                                The customer @Model.FirstName @Model.LastName is assigned to an incident!<br />
+                                Please update the incidents below in order to delete this Customer.
+                            </p>
+
+                            @foreach (Incident incident in ViewBag.Incidents)
+                            {
+                                <a class="fBtn" asp-action="Edit" asp-controller="Incident" asp-route-id="@incident.IncidentId">@incident.Title</a>
+                            }
+
+                        }
+
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>

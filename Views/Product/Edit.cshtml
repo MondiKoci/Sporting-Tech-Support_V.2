@@ -1,0 +1,35 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Edit Incident";
+    ViewBag.Heading = "Edit Incident";
+    ViewBag.Desc = "Please fill out incident information";
+}
+
+<form class="addEditForm" asp-action="Edit" method="post">
+    <h2 class="subHeading">Product information</h2>
+    <div>
+        <label asp-for="Code">Code</label>
+        <input asp-for="Code" />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+    <div>
+
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Price">Yearly Price</label>
+        <input asp-for="Price" value="@Model.Price.ToString("#,##0.00#")" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="ReleaseDate">Release Date</label>
+        <input asp-for="ReleaseDate" />
+    </div>
+    <div>
+        <input type="hidden" asp-for="ProductId" />
+        <button class="fBtn" type="submit">@ViewBag.Action</button>
+        <a class="fBtn" asp-controller="Product" asp-action="Index">Cancel</a>
+    </div>
+</form>
