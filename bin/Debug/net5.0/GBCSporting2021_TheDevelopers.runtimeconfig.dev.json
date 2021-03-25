@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Bristle\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Bristle\\.nuget\\packages"
+    ]
+  }
+}
