@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    string ActiveNav(string controller, string action)
+    {
+        string currentAction = ViewContext.RouteData.Values["Action"].ToString();
+        string currentController = ViewContext.RouteData.Values["Controller"].ToString();
+        if (controller == currentController && action == currentAction) {
+            return "active";
+        }
+        return "";
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,13 +35,13 @@
                 </div>
                 <div id="nav">
                     <nav>
-                        <a href="/">Home</a>
-                        <a href="/products">Products</a>
-                        <a href="/technicians">Technicians</a>
-                        <a href="/customers">Customers</a>
-                        <a href="/incidents">Incidents</a>
+                        <a class="@ActiveNav("Home", "Index")" href="/">Home</a>
+                        <a class="@ActiveNav("Product", "Index")"href="/products">Products</a>
+                        <a class="@ActiveNav("Technician", "Index")"href="/technicians">Technicians</a>
+                        <a class="@ActiveNav("Customer", "Index")"href="/customers">Customers</a>
+                        <a class="@ActiveNav("Incident", "Index")"href="/incidents">Incidents</a>
                         <a href="#">Registrations</a> <!-- LINK NEEDED -->
-                        <a href="/about">About</a>
+                        <a class="@ActiveNav("Home", "About")"href="/about">About</a>
                     </nav>
                 </div>
             </div>

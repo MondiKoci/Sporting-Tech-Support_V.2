@@ -13,7 +13,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         {
             context = scx;
         }
-        [Route("[controller]s")]
+        [Route("/customers")]
         public IActionResult Index()
         {
             var customers = context.Customers

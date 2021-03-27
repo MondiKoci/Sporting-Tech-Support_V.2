@@ -44,8 +44,12 @@ namespace GBCSporting2021_TheDevelopers
 
             app.UseRouting();
 
+
+
             app.UseEndpoints(endpoints =>
             {
+                //Enable attribute routing
+                endpoints.MapControllers();
 
                 endpoints.MapControllerRoute(
                     name: "default",
