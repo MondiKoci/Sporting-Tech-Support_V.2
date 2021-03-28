@@ -28,6 +28,7 @@
                 <tr>
                     <th class="font">Customer</th>
                     <th class="font">Product</th>
+                    <th class="font">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                     <tr>
                         <td>@reg.Customer.FirstName @reg.Customer.LastName</td>
                         <td>@reg.Product.Name</td>
+                        <td><a class="btn btn-primary" asp-action="Delete">Delete</a></td>
                     </tr>
 
                 }
