@@ -38,7 +38,8 @@
                     <tr>
                         <td>@reg.Customer.FirstName @reg.Customer.LastName</td>
                         <td>@reg.Product.Name</td>
-                        <td><a class="btn btn-primary" asp-action="Delete">Delete</a></td>
+                        <td><a class="btn btn-primary" asp-action="Delete" asp-route-idProduct="@reg.Product.ProductId"
+                               asp-route-idCustomer="@reg.Customer.CustomerId">Delete</a></td>
                     </tr>
 
                 }
