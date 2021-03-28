@@ -1,5 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model RegistrationListViewModel
 @{
+    ViewBag.Title = "Registrations";
 }
+
+<form asp-action="Index" method="post">
+    <label>Customer</label>
+    <select class="form-control" name="id" asp-items="@Model.CustomerList">
+        @if (ViewBag.Show != 1)
+        {
+            <option>Select a Customer</option>
+        }
+        else
+        {
+            <option value="@ViewBag.custId" name="@ViewBag.custId">@ViewBag.Session</option>
+        }
+    </select>
+
+
+    <br />
+    <button type="submit" class="btn btn-primary">Get Customer</button>
+
+    @if (ViewBag.Show == 1)
+    {
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="font">Customer</th>
+                    <th class="font">Product</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Registration reg in Model.Registrations)
+                {
+
+                    <tr>
+                        <td>@reg.Customer.FirstName @reg.Customer.LastName</td>
+                        <td>@reg.Product.Name</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+        <label>Product</label>
+        <select class="form-control" name="productId" asp-items="@Model.ProductList">
+        </select>
+        <br />
+        <a class="btn btn-primary" asp-action="Add">Register</a>
+    }
+</form>
