@@ -25,7 +25,7 @@ namespace GBCSporting2021_TheDevelopers
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRouting(options =>
             {
                 options.LowercaseUrls = true;
@@ -33,6 +33,8 @@ namespace GBCSporting2021_TheDevelopers
             });
             services.AddDbContext<SportContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("SportContext")));
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,15 +43,11 @@ namespace GBCSporting2021_TheDevelopers
             app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
-
-
 
             app.UseEndpoints(endpoints =>
             {
-                //Enable attribute routing
-                endpoints.MapControllers();
 
                 endpoints.MapControllerRoute(
                     name: "default",
