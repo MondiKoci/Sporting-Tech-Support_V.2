@@ -80,3 +80,4 @@ C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application 
 C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\obj\Debug\net5.0\ref\GBCSporting2021_TheDevelopers.dll
 C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\obj\Debug\net5.0\GBCSporting2021_TheDevelopers.pdb
 C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\obj\Debug\net5.0\GBCSporting2021_TheDevelopers.genruntimeconfig.cache
+C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\obj\Debug\net5.0\Razor\Views\Registration\Index.cshtml.g.cs
