@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace GBCSporting2021_TheDevelopers.Models
 {
@@ -16,6 +17,8 @@ namespace GBCSporting2021_TheDevelopers.Models
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<Country> Countries { get; set; }
 
+        public DbSet<Registration> Registrations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().HasData(
@@ -31,7 +34,7 @@ namespace GBCSporting2021_TheDevelopers.Models
                     Province = "ON",
                     CountryId = 1,
                     Phone = "123-123-1234"
-
+                    
                 },
                 new Customer
                 {
@@ -45,7 +48,6 @@ namespace GBCSporting2021_TheDevelopers.Models
                     Province = "ON",
                     CountryId = 1,
                     Phone = "123-123-1234"
-
                 }
                 );
 
@@ -106,6 +108,20 @@ namespace GBCSporting2021_TheDevelopers.Models
                 new Country { CountryId = 4, Name = "Japan" },
                 new Country { CountryId = 5, Name = "Albania" },
                 new Country { CountryId = 1, Name = "Italy" }
+                );
+            modelBuilder.Entity<Registration>().HasData(
+                new Registration
+                {
+                    RegistrationId = 1,
+                    CustomerId = 1,
+                    ProductId = 1
+                },
+                new Registration
+                {
+                    RegistrationId = 2,
+                    CustomerId = 2,
+                    ProductId = 1
+                }
                 );
         }
     }
