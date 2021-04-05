@@ -1,0 +1,24 @@
+﻿@model Registration
+@{
+    ViewBag.Title = "Delete Registration";
+}
+
+<body>
+    <div class="wrap">
+        <main>
+            <form asp-action="Delete" method="post">
+                <div class="mainContents">
+                    <div class="container">
+                        <h2 class="subHeading">Confirmation</h2>
+                        <p id="deleteMessage">Are you sure you want to delete @ViewBag.delCustomer's registration to @ViewBag.delProduct? By selecting yes, you are deleting the item you selected.</p>
+                        <div>
+                            <input type="hidden" asp-for="RegistrationId" />
+                            <button class="fBtn" type="submit">Yes</button>
+                            <a class="fBtn" asp-action="RedirectRegistration" asp-route-id="@Model.CustomerId">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>

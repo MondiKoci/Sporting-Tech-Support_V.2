@@ -9,6 +9,7 @@ namespace GBCSporting2021_TheDevelopers.Models
     public class RegistrationSession
     {
         private const string CustomersKey = "myCustomer";
+        private const string ProductsKey = "myProducts";
 
         private ISession session { get; set; }
         public RegistrationSession(ISession session)
@@ -30,5 +31,6 @@ namespace GBCSporting2021_TheDevelopers.Models
         {
             session.Remove(CustomersKey);
         }
+
     }
 }
