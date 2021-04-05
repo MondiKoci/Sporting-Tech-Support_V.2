@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sportspro.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Update Incident - details | SportsPro</title> 
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="container">
+                <div id="logo">
+                    <img src="img/sportsProLogo.png" alt="SportsPro">
+                </div>
+                <div id="nav">
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="productmanager.html">Products</a>
+                        <a href="techmanager.html">Technicians</a>
+                        <a href="custmanager.html">Customers</a>
+                        <a href="incidentmanager.html">Incidents</a>
+                        <a href="registration.html">Registrations</a>
+                        <a href="about.html">About</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="top">
+                <div class="container">
+                    <h1>Update Incident</h1> 
+                    <p>To switch technicians, please click on the 'Switch Technician' button.</p> 
+                </div>
+            </div>
+            <div class="mainContents">
+                <div class="container">
+                    <div id="registration_product_table">
+                        <h2 class="subHeading">Assigned / Open Incident</h2>
+                        <p class="registration_customerName" id="rc_a">Technician:</p>
+                        <p class="registration_customerName" id="rc_b">John Doe </p> <!-- Dynamic Name -->
+                        <p class="table_empty_message">*There are no open incidents for the selected technician.</p> <!-- for Back end: this is the error message when table is null -->
+                        <table class="table"><!-- Dynamic Product Table -->
+                            <thead>
+                                <tr>
+                                    <th  class="font">Title</th>
+                                    <th  class="font">Customer</th>
+                                    <th  class="font">Product</th>
+                                    <th  class="font">Date Opened</th>
+                                    <th  class="font">Modify</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GETTHIC55 did not get them Thicky</td>
+                                    <td>Candance Jodi</td>
+                                    <td>Thicky Nicky Squat Booster</td>
+                                    <td>2021-06-17</td>
+                                    <td>
+                                        <!-- To file 'update_incident_edit.html' -->
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ABTON3XP resulted in sickness</td>
+                                    <td>Antony Golpha</td>
+                                    <td>Ab Toner Pills</td>
+                                    <td>2021-05-22</td>
+                                    <td>
+                                        <!-- To file 'update_incident_edit.html' -->
+                                        <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a> 
+                                    </td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="" class="fBtn stb" asp-action="">Switch Technician</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

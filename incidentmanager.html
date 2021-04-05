@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sportspro.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Incident Manager | SportsPro</title>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="container">
+                <div id="logo">
+                    <img src="img/sportsProLogo.png" alt="SportsPro">
+                </div>
+                <div id="nav">
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="productmanager.html">Products</a>
+                        <a href="techmanager.html">Technicians</a>
+                        <a href="custmanager.html">Customers</a>
+                        <a href="incidentmanager.html" class="navFocus">Incidents</a>
+                        <a href="registration.html">Registrations</a>
+                        <a href="about.html">About</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="top">
+                <div class="container">
+                    <h1>Incident Manager</h1>
+                    <p>Manage incident information</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</head>
+<body>
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-12"><h2 class="subHeading">Incident Manager</h2></div>
+                    <div id="Incident_filter" class="col-sm-8"> <!-- Dynamic filtering : class 'selected' is for a selected category -->
+                        <a class="ifb selected" href="">All Incidents</a>
+                        <a class="ifb" href="">Unassigned Incidents</a>
+                        <a class="ifb" href="">Open Incidents</a>
+                    </div>
+                    <div class="col-sm-2"></div>
+                    <div id="addNewBtn" class="col-sm-2">
+                        <button type="button"  class="fBtn" class="btn btn-info add-new" ><i class="fa fa-plus" ></i class="font"> Add New</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th  class="font">Title</th>
+                        <th  class="font">Customer</th>
+                        <th  class="font">Product</th>
+                        <th  class="font">Date Opened</th>
+                        <th  class="font">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GETTHIC55 did not get them Thicky</td>
+                        <td>Candance Jodi</td>
+                        <td>Thicky Nicky Squat Booster</td>
+                        <td>2021-06-17</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ABTON3XP resulted in sickness</td>
+                        <td>Antony Golpha</td>
+                        <td>Ab Toner Pills</td>
+                        <td>2021-05-22</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NOBABY6 caused the customer to break out in hives</td>
+                        <td>Dolce Mahrya</td>
+                        <td>Protein Baby Fat Reducer Elixer</td>
+                        <td>2021-02-13</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>     
+</body>
+</html>

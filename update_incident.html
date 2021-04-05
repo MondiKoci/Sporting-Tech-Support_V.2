@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sportspro.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Update Incident | SportsPro</title> 
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="container">
+                <div id="logo">
+                    <img src="img/sportsProLogo.png" alt="SportsPro">
+                </div>
+                <div id="nav">
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="productmanager.html">Products</a>
+                        <a href="techmanager.html">Technicians</a>
+                        <a href="custmanager.html">Customers</a>
+                        <a href="incidentmanager.html">Incidents</a>
+                        <a href="registration.html">Registrations</a>
+                        <a href="about.html">About</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="top">
+                <div class="container">
+                    <h1>Update Incident</h1> 
+                    <p>Please select a technician from the drop-down menu to update incident</p> 
+                </div>
+            </div>
+            <div class="mainContents">
+                <div class="container">
+                    <h2 class="subHeading">Technician / Update Incident</h2>
+                    <div id="update_incident_technician_dropdown">
+                        <form class="update_incident_technician products_registration" action=""> <!-- Dynamic Product Dropdown -->
+                            <p class="dd_error_message">*Please select a technician from the dropdown list below.</p> <!-- for Back end: Please modify the error message placeholder -->
+                            <select name="products_registration" class="products_registration" required>
+                                <option value="" disabled selected>Select technician</option>
+                                <option value="">Usagi Tsukino</option>
+                                <option value="">Seiya Kou</option>
+                                <option value="">Mamoru Chiba</option>
+                            </select>
+                            <input class="fBtn" type="submit" value="Select"> <!-- input type double check -->
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

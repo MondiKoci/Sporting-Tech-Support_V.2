@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sportspro.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Registration - details | SportsPro</title> 
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="container">
+                <div id="logo">
+                    <img src="img/sportsProLogo.png" alt="SportsPro">
+                </div>
+                <div id="nav">
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="productmanager.html">Products</a>
+                        <a href="techmanager.html">Technicians</a>
+                        <a href="custmanager.html">Customers</a>
+                        <a href="incidentmanager.html">Incidents</a>
+                        <a href="registration.html" class="navFocus">Registrations</a>
+                        <a href="about.html">About</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="top">
+                <div class="container">
+                    <h1>Registration</h1> 
+                    <p>Please select a product from the Product drop-down list and click the Register button</p> 
+                </div>
+            </div>
+            <div class="mainContents">
+                <div class="container">
+                    <div id="registration_product_table">
+                        <h2 class="subHeading">Registrations</h2>
+                        <p class="registration_customerName" id="rc_a">Customer:</p>
+                        <p class="registration_customerName" id="rc_b">John Doe </p> <!-- Dynamic Name -->
+                        <p class="table_empty_message">*There are no products registered for the selected customer.</p> <!-- for Back end: this is the error message when table is null -->
+                        <table class="table"> <!-- Dynamic Product Table -->
+                            <thead>
+                                <tr>
+                                    <th  class="font">Code</th>
+                                    <th  class="font">Name</th>
+                                    <th  class="font">Modify</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ABTON3XP</td>
+                                    <td>Ab Toner Pill 30XP</td>
+                                    <td>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>GETTHIC55</td>
+                                    <td>Thicky Nicky Squat Booster</td>
+                                    <td>
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    </td>
+                                </tr>   
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div id="registration_product_dropdown">
+                        <h2 class="subHeading">Product</h2>
+                        <form class="products_registration" action=""> <!-- Dynamic Product Dropdown -->
+                            <p class="dd_error_message">*Please select a product from the dropdown list below.</p> <!-- for Back end: Please modify the error message placeholder -->
+                            <select name="products_registration" class="products_registration" required>
+                                <option value="" disabled selected>Select product</option>
+                                <option value="">Product 1</option>
+                                <option value="">Product 2</option>
+                            </select>
+                            <input class="fBtn" type="submit" value="Register"> <!-- type double check -->
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
