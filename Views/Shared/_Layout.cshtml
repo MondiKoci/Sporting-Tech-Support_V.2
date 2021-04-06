@@ -40,7 +40,7 @@
                         <a class="@ActiveNav("Technician", "Index")"href="/technicians">Technicians</a>
                         <a class="@ActiveNav("Customer", "Index")"href="/customers">Customers</a>
                         <a class="@ActiveNav("Incident", "Index")"href="/incidents">Incidents</a>
-                        <a href="#">Registrations</a> <!-- LINK NEEDED -->
+                        <a class="@ActiveNav("Registration", "Index")" href="/registrations">Registrations</a> <!-- LINK NEEDED -->
                         <a class="@ActiveNav("Home", "About")"href="/about">About</a>
                     </nav>
                 </div>
@@ -54,7 +54,15 @@
                 </div>
             </div>
             <div class="mainContents">
+                
                 <div class="container">
+                    @if (TempData["alertMessage"] != null)
+                    {
+                    <div class="@TempData["alertClass"]">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>@TempData["alertMessage"]</strong>.
+                    </div>
+                    }
                     @RenderBody()
                 </div>
             </div>

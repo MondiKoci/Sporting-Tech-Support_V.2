@@ -58,7 +58,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                     Value = c.CustomerId.ToString(),
                     Text = c.FirstName + " " + c.LastName
                 }).ToList(),
-                
+
                 ProductList = products.Select(p => new SelectListItem()
                 {
                     Value = p.ProductId.ToString(),

@@ -84,3 +84,5 @@ C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application 
 C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\obj\Debug\net5.0\Razor\Views\Registration\Delete.cshtml.g.cs
+C:\OneDrive\OneDrive - George Brown College\Semester IV\Courses\Web Application Development\A2\obj\Debug\net5.0\Razor\Views\Registration\GetRegistrations.cshtml.g.cs

@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSporting2021_TheDevelopers.Migrations
 {
     [DbContext(typeof(SportContext))]
-    [Migration("20210224015015_Initial")]
-    partial class Initial
+    [Migration("20210405011252_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.3")
+                .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("GBCSporting2021_TheDevelopers.Models.Country", b =>
@@ -73,7 +73,8 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CountryId")
+                    b.Property<int?>("CountryId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -232,6 +233,42 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                         });
                 });
 
+            modelBuilder.Entity("GBCSporting2021_TheDevelopers.Models.Registration", b =>
+                {
+                    b.Property<int>("RegistrationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RegistrationId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Registrations");
+
+                    b.HasData(
+                        new
+                        {
+                            RegistrationId = 1,
+                            CustomerId = 1,
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            RegistrationId = 2,
+                            CustomerId = 2,
+                            ProductId = 1
+                        });
+                });
+
             modelBuilder.Entity("GBCSporting2021_TheDevelopers.Models.Technician", b =>
                 {
                     b.Property<int>("TechnicianId")
@@ -312,6 +349,25 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Technician");
+                });
+
+            modelBuilder.Entity("GBCSporting2021_TheDevelopers.Models.Registration", b =>
+                {
+                    b.HasOne("GBCSporting2021_TheDevelopers.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GBCSporting2021_TheDevelopers.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

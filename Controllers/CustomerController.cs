@@ -2,16 +2,24 @@
 using System.Linq;
 using GBCSporting2021_TheDevelopers.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 
 namespace GBCSporting2021_TheDevelopers.Controllers
 {
     public class CustomerController : Controller
     {
         private SportContext context;
+        private List<SelectListItem> CountriesList;
 
         public CustomerController(SportContext scx)
         {
             context = scx;
+            CountriesList = context.Countries.OrderBy(c => c.Name).Select(c => new SelectListItem()
+            {
+                Value = c.CountryId.ToString(),
+                Text = c.Name
+            }).ToList();
         }
         [Route("/customers")]
         public IActionResult Index()
@@ -26,7 +34,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+            ViewBag.Countries = CountriesList;
             return View("Edit", new Customer());
         }
 
@@ -34,7 +42,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+            ViewBag.Countries = CountriesList;
             var customer = context.Customers.Find(id);
             return View(customer);
         }
@@ -47,11 +55,15 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 if (customer.CustomerId == 0)
                 {
                     context.Customers.Add(customer);
+                    
                 }
                 else
                 {
                     context.Customers.Update(customer);
                 }
+                TempData["alertMessage"] = customer.CustomerId == 0 ?
+                    "Customer added successfully" : "Customer updated successfully";
+                TempData["alertClass"] = "alert alert-success alert-dismissible";
                 context.SaveChanges();
                 return RedirectToAction("Index", "Customer");
             }
@@ -65,7 +77,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     ViewBag.Action = "Edit";
                 }
-                ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+                TempData["alertMessage"] = customer.CustomerId == 0 ?
+                    "Customer was not added!" : "Customer was not updated!";
+                TempData["alertClass"] = "alert alert-warning alert-dismissible";
+                ViewBag.Countries = CountriesList;
                 return View(customer);
             }
         }

@@ -13,7 +13,6 @@ namespace GBCSporting2021_TheDevelopers.Models
         public List<SelectListItem> CustomerList { get; set; }
         public List<SelectListItem> ProductList { get; set; }
         public List<Product> Products { get; set; }
-
         public Customer Customer { get; set; }
  
     }

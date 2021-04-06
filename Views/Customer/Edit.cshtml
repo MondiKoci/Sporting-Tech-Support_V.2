@@ -12,7 +12,7 @@
         <h2 class="subHeading">Customer information</h2>
         <div>
             <label asp-for="FirstName">First Name</label>
-            <input asp-for="FirstName" />
+            <input type="text" class="form-control @ViewBag.IsValid" asp-for="FirstName" />
             <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
         <div>
@@ -42,13 +42,10 @@
         </div>
         <div>
             <label asp-for="CountryId">Country</label>
-            <select asp-for="CountryId" class="form-control">
-                <option value="">Select a Country</option>
-                @foreach (Country c in ViewBag.Countries)
-                {
-                    <option value="@c.CountryId">@c.Name</option>
-                }
+            <select class="form-control" name="CountryId" asp-items="@ViewBag.Countries">
+                <option>Select Country</option>
             </select>
+            <br />
             <span asp-validation-for="CountryId" class="text-danger"></span>
         </div>
         <div>
