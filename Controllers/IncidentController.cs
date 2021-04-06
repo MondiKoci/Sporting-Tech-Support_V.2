@@ -2,6 +2,7 @@
 using System.Linq;
 using GBCSporting2021_TheDevelopers.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GBCSporting2021_TheDevelopers.Controllers
 {
@@ -12,6 +13,23 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         {
             context = scx;
         }
+
+        [Route("[controller]s")]
+        public IActionResult GetTechnician()
+        {
+            var model = new IncidentListViewModel
+            {
+                TechnicianList = context.Technicians.Select(t => new SelectListItem()
+                {
+                    Value = t.TechnicianId.ToString(),
+                    Text = t.FirstName + " " + t.LastName
+                }).ToList()
+            };
+
+            return View(model);
+        }
+
+        
 
         [HttpGet]
         public IActionResult Delete(int id)
@@ -27,7 +45,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("/incidents")]
+        [Route("[controller]s")]
         public IActionResult Index()
         {
             var incidents = context.Incidents
@@ -41,57 +59,80 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Action = "Add";
-            ViewBag.Customers = context.Customers.OrderBy(c => c.FirstName).ToList();
-            ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.FirstName).ToList();
-            return View("Edit", new Incident());
+            var model = new IncidentViewModel
+            {
+                Incident = new Incident(),
+                Customers = context.Customers.OrderBy(c => c.FirstName).ToList(),
+                Technicians = context.Technicians.OrderBy(t => t.FirstName).ToList(),
+                Products = context.Products.OrderBy(p => p.Name).ToList(),
+                ActionPage = "Add",
+                CustomerList = context.Customers.Select(c => new SelectListItem()
+                {
+                    Value = c.CustomerId.ToString(),
+                    Text = c.FirstName + " " + c.LastName
+                }).ToList(),
+                ProductList = context.Products.Select(p => new SelectListItem()
+                {
+                    Value = p.ProductId.ToString(),
+                    Text = p.Name
+                }).ToList(),
+                TechnicianList = context.Technicians.Select(t => new SelectListItem()
+                {
+                    Value = t.TechnicianId.ToString(),
+                    Text = t.FirstName + " " + t.LastName
+                }).ToList()
+            };
+            return View("Edit", model);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewBag.Action = "Edit";
-            ViewBag.Customers = context.Customers.OrderBy(c => c.FirstName).ToList();
-            ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-            ViewBag.Technicians = context.Technicians.OrderBy(t => t.FirstName).ToList();
+            var model = new IncidentViewModel
+            {
+                Incident = context.Incidents.Find(id),
+                Customers = context.Customers.OrderBy(c => c.FirstName).ToList(),
+                Technicians = context.Technicians.OrderBy(t => t.FirstName).ToList(),
+                Products = context.Products.OrderBy(p => p.Name).ToList(),
+                ActionPage = "Edit",
+                CustomerList = context.Customers.Select(c => new SelectListItem()
+                {
+                    Value = c.CustomerId.ToString(),
+                    Text = c.FirstName + " " + c.LastName
+                }).ToList(),
+                ProductList = context.Products.Select(p => new SelectListItem()
+                {
+                    Value = p.ProductId.ToString(),
+                    Text = p.Name
+                }).ToList(),
+                TechnicianList = context.Technicians.Select(t => new SelectListItem()
+                {
+                    Value = t.TechnicianId.ToString(),
+                    Text = t.FirstName + " " + t.LastName
+                }).ToList()
+            };
+
             var incident = context.Incidents.Find(id);
-            return View(incident);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(Incident incident)
+        public IActionResult Edit(IncidentViewModel data)
         {
-            if (ModelState.IsValid)
-            {
-                if (incident.IncidentId == 0)
+           
+                if (data.ActionPage == "Add")
                 {
 
-                    context.Incidents.Add(incident);
+                    context.Incidents.Add(data.Incident);
 
                 }
                 else
                 {
-                    context.Incidents.Update(incident);
+                    context.Incidents.Update(data.Incident);
                 }
                 context.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            else
-            {
-                if (incident.IncidentId == 0)
-                {
-                    ViewBag.Action = "Add";
-                }
-                else
-                {
-                    ViewBag.Action = "Edit";
-                }
-                ViewBag.Customers = context.Customers.OrderBy(c => c.FirstName).ToList();
-                ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
-                ViewBag.Technicians = context.Technicians.OrderBy(t => t.FirstName).ToList();
-                return View(incident);
-            }
+           
         }
     }
 }
