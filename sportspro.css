@@ -370,12 +370,12 @@ table{
 /* For backend: Please use this class for instruction page11: 
    Add custom CSS that uses a different border and background
    for the <input> elements that contain invalid data */
-.error_input{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 2px;
-    border: 1px solid brown;
-    outline: none;
-    background-color: rgba(165, 42, 42, 0.1)
+.input-validation-error{
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    border-radius: 2px !important;
+    border: 1px solid brown !important;
+    outline: none !important;
+    background-color: rgba(165, 42, 42, 0.1) !important;
 }
