@@ -14,7 +14,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             context = scx;
         }
 
-        [Route("[controller]s")]
+        [Route("incidents/get")]
         public IActionResult GetTechnician()
         {
             var model = new IncidentListViewModel
@@ -45,7 +45,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
-        [Route("[controller]s")]
+        [Route("/incidents")]
         public IActionResult Index()
         {
             var incidents = context.Incidents
