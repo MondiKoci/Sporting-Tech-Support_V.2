@@ -7,7 +7,7 @@
 # Robertha Alvarez Diaz - 101236645    robertha.alvarezdiaz@georgebrown.ca                   -> Team up with Yukina for Views and design
        
 # Max Grossman - 101294134 -           max.grossman2@georgebrown.ca                          -> UML Diagrams, Database design/modelling and adding dynamic elements to front end
-# Chun-chen Lu - 101279412                                                                   -> Add/Delete features
+# Chun-chen Lu - 101279412             chun-chen.lu@georgebrown.ca                           -> filtering for incidents
 
 # Status so far: 
 
