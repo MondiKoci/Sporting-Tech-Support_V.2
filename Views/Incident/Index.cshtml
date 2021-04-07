@@ -12,12 +12,21 @@
             <div class="row">
                 <div class="col-sm-12"><h2 class="subHeading">Incident Manager</h2></div>
                 <div class="col-sm-8"></div>
-                <div id="addNewBtn" class="col-sm-4">
-                    <a class="fBtn btn btn-info add-new" asp-controller="Incident" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
+                
+                <div id="Incident_filter" class="col-sm-8">
+                    <!-- Dynamic filtering : class 'selected' is for a selected category -->
+                    <a class="ifb selected" href="">All Incidents</a>
+                    <a class="ifb" href="">Unassigned Incidents</a>
+                    <a class="ifb" href="">Open Incidents</a>
+                </div>
+
+
+                <div id="addNewBtn" class="col-sm-2">
+                    <a class="fBtn" asp-controller="Incident" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
                 </div>
             </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table">
             <thead>
                 <tr>
                     <th class="font">Title</th>
