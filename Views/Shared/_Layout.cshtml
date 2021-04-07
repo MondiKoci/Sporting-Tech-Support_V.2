@@ -1,15 +1,7 @@
-﻿@{ 
-    string ActiveNav(string controller, string action)
-    {
-        string currentAction = ViewContext.RouteData.Values["Action"].ToString();
-        string currentController = ViewContext.RouteData.Values["Controller"].ToString();
-        if (controller == currentController && action == currentAction) {
-            return "active";
-        }
-        return "";
-    }
+﻿@{
+   var currentAction = ViewContext.RouteData.Values["action"].ToString();
+   var currentController = ViewContext.RouteData.Values["controller"].ToString();
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +14,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
     <title> @ViewBag.Title | SportsPro</title> <!-- CHANGE PAGE TITLE -->
 </head>
 <body>
@@ -35,13 +25,13 @@
                 </div>
                 <div id="nav">
                     <nav>
-                        <a class="@ActiveNav("Home", "Index")" href="/">Home</a>
-                        <a class="@ActiveNav("Product", "Index")"href="/products">Products</a>
-                        <a class="@ActiveNav("Technician", "Index")"href="/technicians">Technicians</a>
-                        <a class="@ActiveNav("Customer", "Index")"href="/customers">Customers</a>
-                        <a class="@ActiveNav("Incident", "Index")"href="/incidents">Incidents</a>
-                        <a class="@ActiveNav("Registration", "Index")" href="/registrations">Registrations</a> <!-- LINK NEEDED -->
-                        <a class="@ActiveNav("Home", "About")"href="/about">About</a>
+                        <a href="/" class="@(currentController == "Home" && currentAction == "Index" ? "navFocus" : "")">Home</a>
+                        <a href="/products" class="@(currentController == "Product" ? "navFocus" : "")">Products</a>
+                        <a href="/technicians" class="@(currentController == "Technician" ? "navFocus" : "")">Technicians</a>
+                        <a href="/customers" class="@(currentController == "Customer" ? "navFocus" : "")">Customers</a>
+                        <a href="/incidents" class="@(currentController == "Incident" ? "navFocus" : "")">Incidents</a>
+                        <a href="/registrations" class="@(currentController == "Registration" ? "navFocus" : "")">Registrations</a>
+                        <a href="/about" class="@(currentController == "Home" && currentAction == "About" ? "navFocus" : "")">About</a>
                     </nav>
                 </div>
             </div>
@@ -54,15 +44,7 @@
                 </div>
             </div>
             <div class="mainContents">
-                
                 <div class="container">
-                    @if (TempData["alertMessage"] != null)
-                    {
-                    <div class="@TempData["alertClass"]">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>@TempData["alertMessage"]</strong>.
-                    </div>
-                    }
                     @RenderBody()
                 </div>
             </div>

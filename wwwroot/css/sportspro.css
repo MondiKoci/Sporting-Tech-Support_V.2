@@ -20,7 +20,7 @@
 
 /* HEADER */
 header {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     position: fixed;
     top: 0;
@@ -45,7 +45,7 @@ nav {
 
     nav a {
         padding: 15px !important;
-        color: white;
+        color: rgb(255, 255, 255);
         text-decoration: none !important;
         line-height: 50px !important;
         font-family: 'Gruppo', cursive;
@@ -55,17 +55,17 @@ nav {
             color: rgb(196, 238, 248);
             transition: 0.5s;
         }
-a.active {
-    color: rgb(196, 238, 248);
-}
 
+.navFocus {
+    color: rgb(117, 214, 238);
+}
 /* HEADING */
 #top {
-    background: url(/img/pexels-victor-freitas-2261477.jpg);
+    background: url(img/pexels-victor-freitas-2261477.jpg);
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
     background-size: cover;
     text-align: center;
-    padding: 150px 0 110px 0 !important;
+    padding: 120px 0 80px 0 !important;
 }
 
     #top h1 {
@@ -101,6 +101,7 @@ a.active {
     .homeMenu a:hover {
         color: black;
         transition: 0.5s;
+        text-decoration: none;
     }
 
 .subHeading {
@@ -118,27 +119,63 @@ a.active {
 }
 
     .addEditForm label {
-        display: block;
-        padding-top: 20px;
-        padding-bottom: 5px;
+        padding-top: 10px;
+        padding-bottom: 1px;
+        margin-right: 15px;
         font-size: 15px;
         color: rgb(154, 154, 154);
     }
 
-    .addEditForm input {
+    .addEditForm input, .addEditForm_dd, .addEditForm textarea {
         width: 100%;
         box-sizing: border-box;
         padding: 10px;
         border-radius: 2px;
         border: 1px solid rgb(240, 240, 240);
         background-color: rgb(240, 240, 240);
+        resize: none;
     }
 
         .addEditForm input:focus {
             border: 1px solid rgb(67, 67, 67);
             outline: none;
             transition: 0.5s;
+            background-color: rgb(255, 255, 255);
         }
+
+        .addEditForm_dd:focus {
+            border: 1px solid rgb(67, 67, 67);
+            outline: none;
+            transition: 0.5s;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .addEditForm textarea:focus {
+            border: 1px solid rgb(67, 67, 67);
+            outline: none;
+            transition: 0.5s;
+            background-color: rgb(255, 255, 255);
+        }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 30% auto;
+    margin-bottom: 30px;
+}
+
+.grid-item {
+    padding: 10px 0;
+}
+
+.ed_label {
+    font-size: 15px;
+    color: rgb(154, 154, 154);
+}
+
+.ed_info {
+    font-size: 15px;
+    color: black;
+}
 
 .fBtn {
     box-sizing: border-box;
@@ -152,12 +189,15 @@ a.active {
     background-color: rgb(67, 67, 67);
     color: white;
     cursor: pointer;
+    text-decoration: none;
+    width: 100%;
 }
 
     .fBtn:hover {
         color: rgb(0, 0, 0);
         background-color: white;
         transition: 0.5s;
+        text-decoration: none;
     }
 
     .fBtn:focus {
@@ -170,6 +210,59 @@ a.active {
         transition: 0.1s;
     }
 
+.cancelB {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px;
+    font-family: 'Gruppo', cursive;
+    font-size: 15px;
+    color: rgb(67, 67, 67);
+    text-decoration: underline;
+    border-radius: 2px;
+}
+
+    .cancelB:hover {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+        color: rgb(165, 42, 42);
+        background-color: rgba(165, 42, 42, 0.1);
+        text-decoration: none;
+        transition: 0.5s;
+    }
+
+/* UPDATE INCIDENT */
+.stb {
+    display: block;
+    text-align: center;
+}
+
+/* INCIDENT MANAGER */
+#Incident_filter {
+    margin-top: 20px;
+}
+
+.ifb {
+    display: inline-block;
+    padding: 10px;
+    color: rgb(154, 154, 154);
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0);
+}
+
+    .ifb:hover {
+        color: black;
+        transition: 0.5s;
+        text-decoration: none;
+    }
+
+.selected {
+    color: black;
+    font-weight: bold;
+    border-bottom: 1.5px solid rgb(196, 238, 248);
+}
+
 /* DELETE */
 #deleteMessage {
     margin: 50px 0 20px 0;
@@ -181,16 +274,48 @@ a.active {
     line-height: 30px;
     color: rgb(112, 112, 112);
 }
-/* ROBII */
+
+/* REGISTRATION DETAILS */
+.registration_customerName {
+    font-size: 15px;
+    display: inline-block;
+}
+
+#rc_a {
+    padding-right: 5px;
+}
+
+.products_registration {
+    width: 100%;
+}
+
+    .products_registration:focus {
+        border: 1px solid rgb(67, 67, 67);
+        outline: none;
+        transition: 0.5s;
+        background-color: rgb(255, 255, 255);
+        transition: 0.5s;
+    }
+
+    .products_registration select {
+        padding: 15px;
+        border: 1px solid rgb(240, 240, 240);
+        background-color: rgb(240, 240, 240);
+    }
+
+select:required:invalid {
+    color: rgb(160, 160, 160);
+}
+
+/* TABLE */
 #addNewBtn {
-    text-align: right;
-    padding-right: 6px;
+    text-align: center;
 }
 
 .font {
     font-family: 'Gruppo', cursive;
-    color: white;
-    background-color: rgb(112, 112, 112);
+    color: rgb(154, 154, 154);
+    font-size: 13px;
 }
 
 .table-wrapper {
@@ -219,7 +344,8 @@ table.table {
 }
 
     table.table tr th, table.table tr td {
-        border-color: rgb(240, 240, 240);
+        border: none;
+        padding: 20px 10px 15px 10px;
     }
 
     table.table th i {
@@ -239,10 +365,6 @@ table.table {
         min-width: 24px;
     }
 
-        table.table td a.add {
-            color: #3d3c3c;
-        }
-
         table.table td a.edit {
             color: #3d3c3c;
         }
@@ -253,13 +375,6 @@ table.table {
 
     table.table td i {
         font-size: 19px;
-    }
-
-    table.table td a.add i {
-        font-size: 24px;
-        margin-right: -1px;
-        position: relative;
-        top: 3px;
     }
 
     table.table .form-control {
@@ -276,3 +391,47 @@ table.table {
     table.table td .add {
         display: none;
     }
+
+tbody tr:nth-child(odd) {
+    background-color: rgb(240, 240, 240);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgb(250, 250, 250);
+}
+
+table thead {
+    border-bottom: 1px solid rgb(154, 154, 154);
+    background-color: rgb(250, 250, 250);
+}
+
+table {
+    border-radius: 2px;
+}
+
+/*  ERROR HANDLING  */
+.dd_error_message, .table_empty_message {
+    color: brown;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.form_input_error_message {
+    display: inline;
+    color: brown;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+/* For backend: Please use this class for instruction page11: 
+   Add custom CSS that uses a different border and background
+   for the <input> elements that contain invalid data */
+.input-validation-error {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    border-radius: 2px !important;
+    border: 1px solid brown !important;
+    outline: none !important;
+    background-color: rgba(165, 42, 42, 0.1) !important;
+}

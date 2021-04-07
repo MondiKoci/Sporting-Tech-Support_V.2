@@ -1,15 +1,21 @@
 ﻿@model RegistrationListViewModel
 @{
-    ViewBag.Title = "Registrations";
+    ViewBag.Title = "Registration";
+    ViewBag.Heading = ViewBag.Action + " Registration";
+    ViewBag.Desc = "View and Create Registrations";
+  
 }
+<div class="container">
+    <h2 class="subHeading">Registration information</h2>
+    <div id="registration_product_dropdown">
+        <form class="products_registration" asp-action="GetRegistrations" method="post">
+            <!-- Dynamic Product Dropdown -->
+            <select class="products_registration" name="id" asp-items="@Model.CustomerList" required>
+          
+            </select>
+            <button type="submit" class="fBtn">Get Customer</button>
+         
+        </form>
+    </div>
+</div>
 
-<form asp-action="GetRegistrations" method="post">
-    <label>Customer</label>
-    <select class="form-control" name="id" asp-items="@Model.CustomerList">
-     <option>Select a Customer</option>
-    </select>
-
-    <br />
-    <button type="submit" class="btn btn-primary">Get Customer</button>
-
-    </form>

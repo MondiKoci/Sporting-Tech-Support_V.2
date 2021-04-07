@@ -1,9 +1,10 @@
 ﻿@model Customer
 @{
 
-    ViewBag.Title = "Edit Customer";
-    ViewBag.Heading = "Edit Customer";
+    ViewBag.Title = ViewBag.Action + " Customer";
+    ViewBag.Heading = ViewBag.Action + " Customer";
     ViewBag.Desc = "Manage customer information";
+
 
 }
 
@@ -12,56 +13,56 @@
         <h2 class="subHeading">Customer information</h2>
         <div>
             <label asp-for="FirstName">First Name</label>
-            <input type="text" class="form-control @ViewBag.IsValid" asp-for="FirstName" />
-            <span asp-validation-for="FirstName" class="text-danger"></span>
+            <span asp-validation-for="FirstName" class="form_input_error_message"></span> 
+            <input asp-for="FirstName" />
         </div>
         <div>
             <label asp-for="LastName">Last Name</label>
+            <span asp-validation-for="LastName" class="form_input_error_message"></span>
             <input asp-for="LastName" />
-            <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Address">Address</label>
+            <span asp-validation-for="Address" class="form_input_error_message"></span>
             <input asp-for="Address" />
-            <span asp-validation-for="Address" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="City">City</label>
+            <span asp-validation-for="City" class="form_input_error_message"></span>
             <input asp-for="City" />
-            <span asp-validation-for="City" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Province">Province</label>
+            <span asp-validation-for="Province" class="form_input_error_message"></span>
             <input asp-for="Province" />
-            <span asp-validation-for="Province" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="PostalCode">Postal Code</label>
+            <span asp-validation-for="PostalCode" class="form_input_error_message"></span>
             <input asp-for="PostalCode" />
-            <span asp-validation-for="PostalCode" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="CountryId">Country</label>
+            <span asp-validation-for="CountryId" class="form_input_error_message"></span>
             <select class="form-control" name="CountryId" asp-items="@ViewBag.Countries">
                 <option>Select Country</option>
             </select>
             <br />
-            <span asp-validation-for="CountryId" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Email">Email</label>
+            <span asp-validation-for="Email" class="form_input_error_message"></span>
             <input asp-for="Email" placeholder="e.g. username@domain.com" />
-            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div>
             <label asp-for="Phone">Phone</label>
+            <span asp-validation-for="Phone" class="form_input_error_message"></span>
             <input type="tel" asp-for="Phone" placeholder="e.g 123-123-1234" />
-            <span asp-validation-for="Phone" class="text-danger"></span>
         </div>
         <div>
             <input type="hidden" asp-for="CustomerId" />
             <button class="fBtn" type="submit">@ViewBag.Action</button>
-            <a class="fBtn" asp-controller="Customer" asp-action="Index">Cancel</a>
+            <a class="cancelB" asp-controller="Customer" asp-action="Index">Cancel</a>
         </div>
     </form>
 </div>
