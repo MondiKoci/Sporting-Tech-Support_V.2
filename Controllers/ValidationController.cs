@@ -22,5 +22,6 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             }
             else return Json(msg);
         }
+
     }
 }

@@ -12,7 +12,21 @@ namespace GBCSporting2021_TheDevelopers.Controllers
     {
         private SportContext context;
         private List<SelectListItem> CountriesList;
-
+        private string[] alertMessages(bool success, string action, string name)
+        {
+            string[] tempAlerts = new string[2];
+            if (success)
+            {
+                tempAlerts[0] = "alert alert-success alert-dismissible";
+                tempAlerts[1] = $"The customer {name} was successfully {action}";
+            }
+            else
+            {
+                tempAlerts[0] = "alert alert-warning alert-dismissible";
+                tempAlerts[1] = $"The customer {name} was not {action}";
+            }
+            return tempAlerts;
+        }
         public CustomerController(SportContext scx)
         {
             context = scx;
@@ -51,29 +65,37 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
-            if (TempData["okEmail"] == null)
+            if(customer.CustomerId == 0)
             {
-                string msg = Check.EmailExists(context, customer.Email);
-                if (!String.IsNullOrEmpty(msg))
+                //Check if email exists in the database;
+                if (TempData["okEmail"] == null)
                 {
-                    ModelState.AddModelError(nameof(Customer.Email), msg);
+                    string msg = Check.EmailExists(context, customer.Email);
+                    if (!String.IsNullOrEmpty(msg))
+                    {
+                        ModelState.AddModelError(nameof(Customer.Email), msg);
+                    }
                 }
             }
-
+            
+            string action = customer.CustomerId == 0 ? "added" : "updated";
+            string name = customer.FirstName + " " + customer.LastName;
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
                 {
                     context.Customers.Add(customer);
-                    
+                    TempData["actionClass"] = "large_div";
+
                 }
                 else
                 {
                     context.Customers.Update(customer);
                 }
-                TempData["alertMessage"] = customer.CustomerId == 0 ?
-                    "Customer added successfully" : "Customer updated successfully";
-                TempData["alertClass"] = "alert alert-success alert-dismissible";
+                string[] alerts = alertMessages(true, action, name);
+                TempData["actionClass"] = "large_div";
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
                 context.SaveChanges();
                 return RedirectToAction("Index", "Customer");
             }
@@ -87,9 +109,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     ViewBag.Action = "Edit";
                 }
-                TempData["alertMessage"] = customer.CustomerId == 0 ?
-                    "Customer was not added!" : "Customer was not updated!";
-                TempData["alertClass"] = "alert alert-warning alert-dismissible";
+                TempData["actionClass"] = "small_div";
+                string[] alerts = alertMessages(false, action, name);
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
                 ViewBag.Countries = CountriesList;
                 return View(customer);
             }
@@ -125,6 +148,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Delete(Customer customer)
         {
+            string name = customer.FirstName + " " + customer.LastName;
             bool isValid = true;
             var incidents = context.Incidents.Include(t => t.Customer).ToList();
             foreach (Incident incident in incidents)
@@ -138,6 +162,9 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             {
                 context.Customers.Remove(customer);
                 context.SaveChanges();
+                string[] alerts = alertMessages(true, "deleted", name);
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
             }
             return RedirectToAction("Index", "Customer");
         }

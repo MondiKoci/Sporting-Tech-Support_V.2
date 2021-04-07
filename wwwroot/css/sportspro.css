@@ -286,3 +286,15 @@ table.table {
     outline: none !important;
     background-color: rgba(165, 42, 42, 0.1) !important;
 }
+
+/*VALIDATION*/
+.small_div{
+    width:100%;
+    max-width:540px;
+    margin:0 auto;
+}
+.large_div {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+}

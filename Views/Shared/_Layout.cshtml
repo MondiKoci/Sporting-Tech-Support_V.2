@@ -58,7 +58,7 @@
                 <div class="container">
                     @if (TempData["alertMessage"] != null)
                     {
-                    <div class="@TempData["alertClass"]">
+                    <div class="@TempData["alertClass"] @TempData["actionClass"]">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong>@TempData["alertMessage"]</strong>.
                     </div>
