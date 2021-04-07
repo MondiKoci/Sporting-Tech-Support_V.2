@@ -17,7 +17,7 @@
                             <div>
                                 <input type="hidden" asp-for="TechnicianId" />
                                 <button class="fBtn" type="submit">Yes</button>
-                                <a class="fBtn" asp-action="Index">Cancel</a>
+                                <a class="cancelB" asp-action="Index">Cancel</a>
                             </div>
                         }
                         else
@@ -26,11 +26,12 @@
                                 The technician @Model.FirstName @Model.LastName is assigned to an incident!<br />
                                 Please update the incidents below in order to delete this technician.
                             </p>
-                           
+
                             @foreach (Incident incident in ViewBag.Incidents)
                             {
                                 <a class="fBtn" asp-action="Edit" asp-controller="Incident" asp-route-id="@incident.IncidentId">@incident.Title</a>
                             }
+                            <a class="cancelB" asp-action="Index">Cancel</a>
 
                         }
 

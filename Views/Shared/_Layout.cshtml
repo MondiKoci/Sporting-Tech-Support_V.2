@@ -1,10 +1,10 @@
 ﻿@{ 
     string ActiveNav(string controller, string action)
     {
-        string currentAction = ViewContext.RouteData.Values["Action"].ToString();
-        string currentController = ViewContext.RouteData.Values["Controller"].ToString();
+        string currentAction = ViewContext.RouteData.Values["action"].ToString();
+        string currentController = ViewContext.RouteData.Values["controller"].ToString();
         if (controller == currentController && action == currentAction) {
-            return "active";
+            return "navFocus";
         }
         return "";
     }
