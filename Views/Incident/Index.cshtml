@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Incident>
+﻿@model List<Incident>
 @{
     ViewBag.Title = "Incident Manager";
     ViewBag.Heading = "Incident Manager";
@@ -15,9 +15,9 @@
                 
                 <div id="Incident_filter" class="col-sm-8">
                     <!-- Dynamic filtering : class 'selected' is for a selected category -->
-                    <a class="ifb" asp-action="Index">All Incidents</a>
-                    <a asp-action="Index" asp-route-open="open" class="ifb">Unassigned Incidents</a>
-                    <a asp-action="Index" asp-route-unasigned="unasigned" class="ifb" >Open Incidents</a>
+                    <a class="ifb selected" href="">All Incidents</a>
+                    <a class="ifb" href="">Unassigned Incidents</a>
+                    <a class="ifb" href="">Open Incidents</a>
                 </div>
 
 

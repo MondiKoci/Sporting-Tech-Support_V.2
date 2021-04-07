@@ -52,26 +52,15 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         }
 
         [Route("/incidents")]
-        public IActionResult Index(string filter)
+        public IActionResult Index()
         {
-
-            IQueryable<Incident> incidents = context.Incidents
+            var incidents = context.Incidents
                 .Include(c => c.Customer)
                 .Include(p => p.Product)
                 .Include(t => t.Technician)
-                .OrderBy(i => i.Title);
-            if (!string.IsNullOrEmpty(filter))
-            {
-                if(filter == "unassigned")
-                {
-                    incidents = incidents.Where(i => i.TechnicianId == null);
-                }
-                else if(filter == "open")
-                {
-                    incidents = incidents.Where(i => i.DateClosed == null);
-                }
-            }
-            return View(incidents.ToList());
+                .OrderBy(i => i.Title)
+                .ToList();
+            return View(incidents);
         }
 
         [HttpGet]
