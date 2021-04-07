@@ -1,0 +1,15 @@
+﻿@model IncidentListViewModel 
+@{
+    ViewBag.Title = "Get Technician";
+}
+
+<form asp-action="GetIncidents" method="post">
+    <label>Technician</label>
+    
+    <select class="form-control" name="id" asp-items="@Model.TechnicianList">
+     <option>Select a Technician</option>
+    </select>
+    <br />
+
+    <button type="submit" class="btn btn-primary">Get Technician</button>
+</form>
