@@ -48,6 +48,12 @@ namespace GBCSporting2021_TheDevelopers
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "open_incident",
+                    pattern: "{controller=Incident}/{action=Index}/{open}");
+                endpoints.MapControllerRoute(
+                    name: "unasigned_incident",
+                    pattern: "{controller=Incident}/{action=Index}/{unasigned}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

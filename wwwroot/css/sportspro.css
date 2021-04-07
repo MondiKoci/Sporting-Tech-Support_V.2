@@ -439,11 +439,11 @@ table {
 /* ALERT MESSAGE */
 .small_div{
     width:100%;
-    max-width:540px;
+    max-width:555px;
     margin:0 auto;
 }
 .large_div {
     width: 100%;
-    max-width: 1040px;
+    max-width: 1070px;
     margin: 0 auto;
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dpk6qox3EwLNkXnbFYE0EdYpkgbQMptE+zlp9v0iIm4btZsqp3VVO9E2ufHDwQIzCTuaBTu4Nlxz459a5x0Dug==",
+  "dgSpecHash": "MBsin3HW+oghR/kcUsS4KU5Oyl5ezgND1nban39DU0xAWxksszX+axRBlpQaEe61BL7aXaCme6aGAzX8GiOcQw==",
   "success": true,
-  "projectFilePath": "C:\\OneDrive\\OneDrive - George Brown College\\Semester IV\\Courses\\Web Application Development\\A2\\GBCSporting2021_TheDevelopers.csproj",
+  "projectFilePath": "D:\\WebDev\\A2\\GBCSporting2021_TheDevelopers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bristle\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Bristle\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.4\\microsoft.aspnetcore.jsonpatch.5.0.4.nupkg.sha512",

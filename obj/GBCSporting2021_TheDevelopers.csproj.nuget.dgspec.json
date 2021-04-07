@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\OneDrive\\OneDrive - George Brown College\\Semester IV\\Courses\\Web Application Development\\A2\\GBCSporting2021_TheDevelopers.csproj": {}
+    "D:\\WebDev\\A2\\GBCSporting2021_TheDevelopers.csproj": {}
   },
   "projects": {
-    "C:\\OneDrive\\OneDrive - George Brown College\\Semester IV\\Courses\\Web Application Development\\A2\\GBCSporting2021_TheDevelopers.csproj": {
+    "D:\\WebDev\\A2\\GBCSporting2021_TheDevelopers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OneDrive\\OneDrive - George Brown College\\Semester IV\\Courses\\Web Application Development\\A2\\GBCSporting2021_TheDevelopers.csproj",
+        "projectUniqueName": "D:\\WebDev\\A2\\GBCSporting2021_TheDevelopers.csproj",
         "projectName": "GBCSporting2021_TheDevelopers",
-        "projectPath": "C:\\OneDrive\\OneDrive - George Brown College\\Semester IV\\Courses\\Web Application Development\\A2\\GBCSporting2021_TheDevelopers.csproj",
+        "projectPath": "D:\\WebDev\\A2\\GBCSporting2021_TheDevelopers.csproj",
         "packagesPath": "C:\\Users\\Bristle\\.nuget\\packages\\",
-        "outputPath": "C:\\OneDrive\\OneDrive - George Brown College\\Semester IV\\Courses\\Web Application Development\\A2\\obj\\",
+        "outputPath": "D:\\WebDev\\A2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Bristle\\AppData\\Roaming\\NuGet\\NuGet.Config",

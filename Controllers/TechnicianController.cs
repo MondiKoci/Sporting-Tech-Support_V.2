@@ -2,6 +2,7 @@
 using System.Linq;
 using GBCSporting2021_TheDevelopers.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace GBCSporting2021_TheDevelopers.Controllers
 {
@@ -53,7 +54,8 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         {
             bool isValid = true;
             var incidents = context.Incidents.Include(t => t.Technician).ToList();
-            foreach(Incident incident in incidents)
+            string name = technician.FirstName + " " + technician.LastName;
+            foreach (Incident incident in incidents)
             {
                 if(incident.Technician.TechnicianId == technician.TechnicianId)
                 {
@@ -62,6 +64,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             }
             if (isValid == true)
             {
+                string[] alerts = Check.alertMessages(true, "deleted", name, "technician");
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
+                TempData["actionClass"] = "large_div";
                 context.Technicians.Remove(technician);
                 context.SaveChanges();
 
@@ -85,6 +91,21 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Edit(Technician technician)
         {
+            if (technician.TechnicianId == 0)
+            {
+                //Check if email exists in the database;
+                if (TempData["okEmail"] == null)
+                {
+                    string msg = Check.TechEmailExists(context, technician.Email);
+                    if (!String.IsNullOrEmpty(msg))
+                    {
+                        ModelState.AddModelError(nameof(Customer.Email), msg);
+                    }
+                }
+            }
+
+            string action = technician.TechnicianId == 0 ? "added" : "updated";
+            string name = technician.FirstName + " " + technician.LastName;
             if (ModelState.IsValid)
             {
                 if (technician.TechnicianId == 0)
@@ -95,6 +116,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     context.Technicians.Update(technician);
                 }
+                string[] alerts = Check.alertMessages(true, action, name, "technician");
+                TempData["actionClass"] = "large_div";
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -108,6 +133,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     ViewBag.Action = "Edit";
                 }
+                TempData["actionClass"] = "small_div";
+                string[] alerts = Check.alertMessages(false, action, name, "technician");
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
                 return View(technician);
             }
         }

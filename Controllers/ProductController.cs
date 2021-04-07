@@ -33,6 +33,11 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Delete(Product product)
         {
+            string name = product.Name;
+            string[] alerts = Check.alertMessages(true, "deleted", name, "product");
+            TempData["alertClass"] = alerts[0];
+            TempData["alertMessage"] = alerts[1];
+            TempData["actionClass"] = "large_div";
             context.Products.Remove(product);
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -55,6 +60,8 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
+            string name = product.Name;
+            string action = product.ProductId == 0 ? "added" : "deleted";
             if (ModelState.IsValid)
             {
                 if (product.ProductId == 0)
@@ -65,6 +72,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     context.Products.Update(product);
                 }
+                string[] alerts = Check.alertMessages(true, action, name, "product");
+                TempData["actionClass"] = "large_div";
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -79,6 +90,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     ViewBag.Action = "Edit";
                 }
+                TempData["actionClass"] = "small_div";
+                string[] alerts = Check.alertMessages(false, action, name, "product");
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
                 return View(product);
             }
         }

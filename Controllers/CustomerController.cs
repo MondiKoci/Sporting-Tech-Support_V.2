@@ -12,21 +12,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
     {
         private SportContext context;
         private List<SelectListItem> CountriesList;
-        private string[] alertMessages(bool success, string action, string name)
-        {
-            string[] tempAlerts = new string[2];
-            if (success)
-            {
-                tempAlerts[0] = "alert alert-success alert-dismissible";
-                tempAlerts[1] = $"The customer {name} was successfully {action}";
-            }
-            else
-            {
-                tempAlerts[0] = "alert alert-warning alert-dismissible";
-                tempAlerts[1] = $"The customer {name} was not {action}";
-            }
-            return tempAlerts;
-        }
+        
         public CustomerController(SportContext scx)
         {
             context = scx;
@@ -92,7 +78,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     context.Customers.Update(customer);
                 }
-                string[] alerts = alertMessages(true, action, name);
+                string[] alerts = Check.alertMessages(true, action, name, "customer");
                 TempData["actionClass"] = "large_div";
                 TempData["alertClass"] = alerts[0];
                 TempData["alertMessage"] = alerts[1];
@@ -110,7 +96,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                     ViewBag.Action = "Edit";
                 }
                 TempData["actionClass"] = "small_div";
-                string[] alerts = alertMessages(false, action, name);
+                string[] alerts = Check.alertMessages(false, action, name, "customer");
                 TempData["alertClass"] = alerts[0];
                 TempData["alertMessage"] = alerts[1];
                 ViewBag.Countries = CountriesList;
@@ -162,10 +148,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             {
                 context.Customers.Remove(customer);
                 context.SaveChanges();
-                string[] alerts = alertMessages(true, "deleted", name);
+                string[] alerts = Check.alertMessages(true, "deleted", name, "customer");
                 TempData["alertClass"] = alerts[0];
                 TempData["alertMessage"] = alerts[1];
-                TempData["actionClass"] = "small_div";
+                TempData["actionClass"] = "large_div";
             }
             return RedirectToAction("Index", "Customer");
         }

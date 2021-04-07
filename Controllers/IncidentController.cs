@@ -41,21 +41,39 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Delete(Incident incident)
         {
+            string name = incident.Title;
+            string[] alerts = Check.alertMessages(true, "deleted", name, "incident");
+            TempData["alertClass"] = alerts[0];
+            TempData["alertMessage"] = alerts[1];
+            TempData["actionClass"] = "large_div";
             context.Incidents.Remove(incident);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [Route("/incidents")]
-        public IActionResult Index()
+        public IActionResult Index(string filter)
         {
-            var incidents = context.Incidents
+
+            IQueryable<Incident> incidents = context.Incidents
                 .Include(c => c.Customer)
                 .Include(p => p.Product)
                 .Include(t => t.Technician)
-                .OrderBy(i => i.Title)
-                .ToList();
-            return View(incidents);
+                .OrderBy(i => i.Title);
+            if (!string.IsNullOrEmpty(filter))
+            {
+                if(filter == "unassigned")
+                {
+                    incidents = incidents.Where(i => i.TechnicianId == null);
+                }
+                else if(filter == "open")
+                {
+                    incidents = incidents.Where(i => i.DateClosed == null);
+                }
+            }
+            return View(incidents.ToList());
         }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -119,7 +137,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Edit(IncidentViewModel data)
         {
-           
+            string name = data.Incident.Title;
+            string action = data.Incident.IncidentId == 0 ? "added" : "deleted";
+            if (ModelState.IsValid)
+            {
                 if (data.ActionPage == "Add")
                 {
 
@@ -130,8 +151,14 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     context.Incidents.Update(data.Incident);
                 }
+                string[] alerts = Check.alertMessages(true, action, name, "incident");
+                TempData["actionClass"] = "large_div";
+                TempData["alertClass"] = alerts[0];
+                TempData["alertMessage"] = alerts[1];
                 context.SaveChanges();
-                return RedirectToAction("Index");
+
+            }
+            return RedirectToAction("Index");
            
         }
     }

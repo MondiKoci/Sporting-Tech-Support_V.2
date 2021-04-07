@@ -24,7 +24,6 @@ namespace GBCSporting2021_TheDevelopers.Models
 
         public DateTime? DateClosed { get; set; }
 
-        [Required(ErrorMessage = "Please select a technician.")]
         public int? TechnicianId { get; set; }
 
         public Technician Technician { get; set; }
