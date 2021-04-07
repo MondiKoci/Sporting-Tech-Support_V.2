@@ -6,16 +6,18 @@ namespace GBCSporting2021_TheDevelopers.Models
     public class Product
     {
         public int ProductId { get; set; }
+
         [Required(ErrorMessage = "Please enter product code!")]
-
         public string Code { get; set; }
-        [Required(ErrorMessage = "Please enter a product name!")]
 
+        [Required(ErrorMessage = "Please enter a product name!")]
+        [StringLength(51, ErrorMessage = "Product name must be 51 characters or less.")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter a price!")]
         [Range(1.00, 100000.00, ErrorMessage = "Enter price between $1.00 and $10,000 ")]
         public double Price { get; set; } = 0.00;
+
         [Required(ErrorMessage = "Please enter release date!")]
         public DateTime ReleaseDate { get; set; } = Convert.ToDateTime(DateTime.Now.ToShortTimeString());
 

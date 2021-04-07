@@ -16,6 +16,7 @@
                     <h2 class="subHeading">Confirmation</h2>
                     <p id="deleteMessage">Are you sure you want to delete the customer @Model.FirstName @Model.LastName?</p>
                     <div>
+                        <input type="hidden" asp-for="CustomerId" />
                         <button class="fBtn" type="submit">Yes</button>
                         <a class="cancelB" asp-action="Index">Cancel</a>
                     </div>

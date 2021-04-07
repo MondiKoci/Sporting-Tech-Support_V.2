@@ -165,6 +165,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 string[] alerts = alertMessages(true, "deleted", name);
                 TempData["alertClass"] = alerts[0];
                 TempData["alertMessage"] = alerts[1];
+                TempData["actionClass"] = "small_div";
             }
             return RedirectToAction("Index", "Customer");
         }
