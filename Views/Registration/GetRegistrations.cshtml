@@ -1,41 +1,66 @@
 ﻿@model RegistrationListViewModel
 @{
-    ViewBag.Title = "Registrations";
+    ViewBag.Title = "Registration";
+    ViewBag.Heading = ViewBag.Action + " Registration";
+    ViewBag.Desc = "View and Create Registrations";
+  
 }
 
-     <form asp-action="Add" method="post">
-    <label>Customer: @ViewBag.Session</label>
-    <br />
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th class="font">Customer</th>
-                <th class="font">Product</th>
-                <th class="font">Action</th>
-            </tr>
-        </thead>
-        <tbody>
 
-            @foreach (Registration reg in Model.Registrations)
+<form asp-action="Add" method="post">
+    <div class="container">
+        <div id="registration_product_table">
+            <h2 class="subHeading">Registrations</h2>
+            <p class="registration_customerName" id="rc_a">Customer: @ViewBag.Session</p>
+            <!-- <p class="registration_customerName" id="rc_b">John Doe </p>  Dynamic Name -->
+            @if (Model.Registrations.Count == 0)
+            {
+                <p class="table_empty_message">*There are no products registered for the selected customer.</p> <!-- for Back end: this is the error message when table is null -->
+            }
+            else
             {
 
-                <tr>
-                    <td>@reg.Customer.FirstName @reg.Customer.LastName</td>
-                    <td>@reg.Product.Name</td>
-                    <td>
-                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@reg.RegistrationId">Delete</a>
-                    </td>
-                </tr>
+            <table class="table">
+                <!-- Dynamic Product Table -->
+                <thead>
+                    <tr>
+                        <th class="font">Code</th>
+                        <th class="font">Name</th>
+                        <th class="font">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Registration reg in Model.Registrations)
+                    {
 
+                        <tr>
+                            <td>@reg.Product.Code</td>
+                            <td>@reg.Product.Name</td>
+                            <td>
+                                <a class="delete" title="Delete" data-toggle="tooltip" asp-action="Delete" asp-route-id="@reg.RegistrationId"><i class="material-icons">&#xE872;</i></a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
             }
-        </tbody>
-        </table>
 
-    <label>Product</label>
-    <select class="form-control" name="productId" asp-items="@Model.ProductList">
-    </select>
-    <br />
+        </div>
+        <br><br>
+            <div id="registration_product_dropdown">
+                <h2 class="subHeading">Product</h2>
+                <!-- Dynamic Product Dropdown -->
+                <p class="dd_error_message"></p> <!-- for Back end: Please modify the error message placeholder -->
+                <select class="products_registration" name="productId" asp-items="@Model.ProductList" required>
+                    <option value="" disabled selected>Select product</option>
+                </select>
+                <button type="submit" class="fBtn">Register</button>
+              
+                <a class="cancelB" asp-action="Index">Back</a>
+            </div>
+    </div>
+</form>
 
-    <button type="submit" class="btn btn-primary">Register</button>
-    <a class="btn btn-primary" asp-action="Index">Back</a>
-         </form>
+
+

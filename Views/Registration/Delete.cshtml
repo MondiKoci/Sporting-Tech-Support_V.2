@@ -1,6 +1,10 @@
 ﻿@model Registration
 @{
     ViewBag.Title = "Delete Registration";
+    ViewBag.Heading = ViewBag.Action + " Delete Registration";
+    ViewBag.Desc = "Delete a customer's registration";
+ 
+
 }
 
 <body>
@@ -14,7 +18,7 @@
                         <div>
                             <input type="hidden" asp-for="RegistrationId" />
                             <button class="fBtn" type="submit">Yes</button>
-                            <a class="fBtn" asp-action="RedirectRegistration" asp-route-id="@Model.CustomerId">Cancel</a>
+                            <a class="cancelB" asp-action="RedirectRegistration" asp-route-id="@Model.CustomerId">Cancel</a>
                         </div>
                     </div>
                 </div>

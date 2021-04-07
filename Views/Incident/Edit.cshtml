@@ -1,41 +1,45 @@
 ﻿@model IncidentViewModel
 @{
-    ViewBag.Title = "Edit Incident";
-    ViewBag.Heading = "Edit Incident";
+    ViewBag.Title = @Model.ActionPage + " Incident";
+    ViewBag.Heading = @Model.ActionPage + " Incident";
     ViewBag.Desc = "Please fill out incident information";
+    
+
 }
 
 <form class="addEditForm" asp-action="Edit" method="post">
     <h2 class="subHeading">Incident information</h2>
     <div>
         <label asp-for="@Model.Incident.CustomerId">Customer</label>
+        <span asp-validation-for="@Model.Incident.CustomerId" class="form_input_error_message"></span>
         <select asp-for="@Model.Incident.CustomerId" class="form-control" asp-items="@Model.CustomerList">
-           <option>Select a Customer</option>
+            <option>Select a Customer</option>
         </select>
-        <span asp-validation-for="@Model.Incident.CustomerId" class="text-danger"></span>
     </div>
     <div>
         <label asp-for="@Model.Incident.ProductId">Product</label>
+        <span asp-validation-for="@Model.Incident.ProductId" class="form_input_error_message"></span>
         <select asp-for="@Model.Incident.ProductId" class="form-control" asp-items="@Model.ProductList">
             <option value="">Select a Product</option>
         </select>
-        <span asp-validation-for="@Model.Incident.ProductId" class="text-danger"></span>
+
     </div>
     <div>
         <label asp-for="@Model.Incident.Title">Title</label>
+        <span asp-validation-for="@Model.Incident.Title" class="form_input_error_message"></span>
         <input asp-for="@Model.Incident.Title" />
-        <span asp-validation-for="@Model.Incident.Title" class="text-danger"></span>
     </div>
 
     <div>
         <label asp-for="@Model.Incident.Description">Description</label>
+        <span asp-validation-for="@Model.Incident.Description" class="form_input_error_message"></span>
         <input asp-for="@Model.Incident.Description" />
-        <span asp-validation-for="@Model.Incident.Description" class="text-danger"></span>
     </div>
 
 
     <div class="form-group">
         <label asp-for="@Model.Incident.TechnicianId">Technician</label>
+        <span asp-validation-for="@Model.Incident.TechnicianId" class="form_input_error_message"></span>
         <select asp-for="@Model.Incident.TechnicianId" class="form-control" asp-items="@Model.TechnicianList">
             <option value="">Select a Technician</option>
         </select>
@@ -44,6 +48,7 @@
 
     <div>
         <label asp-for="@Model.Incident.DateOpened">Date Opened</label>
+        <span asp-validation-for="@Model.Incident.DateOpened" class="form_input_error_message"></span>
         <input asp-for="@Model.Incident.DateOpened" asp-format="{0:yyyy-MM-ddTHH:mm}" textmode="Date" />
     </div>
     <div>
@@ -52,7 +57,7 @@
     </div>
     <div>
         <input type="hidden" asp-for="@Model.Incident.IncidentId" />
-        <button class="fBtn" type="submit">@ViewBag.Action</button>
-        <a class="fBtn" asp-controller="Incident" asp-action="Index">Cancel</a>
+        <button class="fBtn" type="submit">@Model.ActionPage</button>
+        <a class="cancelB" asp-controller="Incident" asp-action="Index">Cancel</a>
     </div>
 </form>
