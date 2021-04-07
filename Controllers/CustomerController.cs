@@ -4,6 +4,7 @@ using GBCSporting2021_TheDevelopers.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System;
 
 namespace GBCSporting2021_TheDevelopers.Controllers
 {
@@ -50,6 +51,15 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         [HttpPost]
         public IActionResult Edit(Customer customer)
         {
+            if (TempData["okEmail"] == null)
+            {
+                string msg = Check.EmailExists(context, customer.Email);
+                if (!String.IsNullOrEmpty(msg))
+                {
+                    ModelState.AddModelError(nameof(Customer.Email), msg);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
