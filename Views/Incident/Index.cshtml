@@ -11,17 +11,11 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-12"><h2 class="subHeading">Incident Manager</h2></div>
-                <div class="col-sm-8">
-        <a asp-action="index" asp-route-activeFilter="all" class="list-group-item @Model.CheckFilter("all")">All Incidents</a>
-        <a asp-action="index" asp-route-activeFilter="unassigned" class="list-group-item @Model.CheckFilter("unassigned")">Unassigned Incidents</a>
-        <a asp-action="index" asp-route-activeFilter="open" class="list-group-item @Model.CheckFilter("open")">Open Incidents</a> 
-                </div>
-                
                 <div id="Incident_filter" class="col-sm-8">
                     <!-- Dynamic filtering : class 'selected' is for a selected category -->
-                    <a class="ifb selected" href="">All Incidents</a>
-                    <a class="ifb" href="">Unassigned Incidents</a>
-                    <a class="ifb" href="">Open Incidents</a>
+                    <a asp-action="index" asp-route-activeFilter="all" class="ifb @Model.CheckFilter("all")">All Incidents</a>
+                    <a asp-action="index" asp-route-activeFilter="unassigned" class="ifb @Model.CheckFilter("unassigned")">Unassigned Incidents</a>
+                    <a asp-action="index" asp-route-activeFilter="open" class="ifb  @Model.CheckFilter("open")">Open Incidents</a>
                 </div>
 
 
@@ -41,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var incident in Model)
+                @foreach (var incident in Model.Incidents)
                 {
                     <tr>
                         <td>@incident.Title</td>

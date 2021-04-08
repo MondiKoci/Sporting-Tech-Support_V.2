@@ -265,3 +265,6 @@ D:\WebDev\A2\obj\Debug\net5.0\GBCSporting2021_TheDevelopers.dll
 D:\WebDev\A2\obj\Debug\net5.0\ref\GBCSporting2021_TheDevelopers.dll
 D:\WebDev\A2\obj\Debug\net5.0\GBCSporting2021_TheDevelopers.pdb
 D:\WebDev\A2\obj\Debug\net5.0\GBCSporting2021_TheDevelopers.genruntimeconfig.cache
+D:\WebDev\A2\obj\Debug\net5.0\Razor\Views\TechIncident\Edit.cshtml.g.cs
+D:\WebDev\A2\obj\Debug\net5.0\Razor\Views\TechIncident\GetIncidents.cshtml.g.cs
+D:\WebDev\A2\obj\Debug\net5.0\Razor\Views\TechIncident\GetTechnician.cshtml.g.cs
