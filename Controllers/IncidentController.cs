@@ -14,23 +14,6 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             context = scx;
         }
 
-        [Route("incidents/get")]
-        public IActionResult GetTechnician()
-        {
-            var model = new IncidentListViewModel
-            {
-                TechnicianList = context.Technicians.Select(t => new SelectListItem()
-                {
-                    Value = t.TechnicianId.ToString(),
-                    Text = t.FirstName + " " + t.LastName
-                }).ToList()
-            };
-
-            return View(model);
-        }
-
-        
-
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -52,15 +35,35 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         }
 
         [Route("/incidents")]
-        public IActionResult Index()
+        public IActionResult Index(string activeFilter = "all")
         {
-            var incidents = context.Incidents
+           var incs = context.Incidents.OrderBy(i => i.Title).ToList();
+           if(activeFilter == "unassigned")
+            {
+                incs = context.Incidents.Where(i => i.TechnicianId == null).OrderBy(i => i.Title).ToList();
+            }
+           else if(activeFilter == "open")
+            {
+                incs = context.Incidents.Where(i => i.DateClosed == null).OrderBy(i => i.Title).ToList();
+            }
+
+            //continue here with filtering, add a model and don't forget ActiveFilter
+            var model = new IncidentListViewModel
+            {
+                Incidents = incs,
+                Technicians = context.Technicians.ToList(),
+                Customers = context.Customers.ToList(),
+                Products = context.Products.ToList(),
+                ActiveFilter = activeFilter
+            };
+
+            /**var incidents = context.Incidents
                 .Include(c => c.Customer)
                 .Include(p => p.Product)
                 .Include(t => t.Technician)
                 .OrderBy(i => i.Title)
-                .ToList();
-            return View(incidents);
+                .ToList(); */
+            return View(model);
         }
 
         [HttpGet]
@@ -148,7 +151,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
 
             }
             return RedirectToAction("Index");
-           
+
         }
     }
 }
