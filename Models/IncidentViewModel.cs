@@ -16,5 +16,6 @@ namespace GBCSporting2021_TheDevelopers.Models
         public List<Product> Products { get; set; }
         public List<Technician> Technicians { get; set; }
         public string ActionPage { get; set; }
+        public string ActiveFilter { get; set; }
     }
 }

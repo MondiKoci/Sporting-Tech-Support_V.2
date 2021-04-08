@@ -9,5 +9,7 @@ namespace GBCSporting2021_TheDevelopers.Models
     {
         public List<Incident> Incidents { get; set; }
         public Technician Technician { get; set; }
+
+        public string CheckFilter(string c) => c.ToLower() == ActiveFilter.ToLower() ? "active" : "";
     }
 }
