@@ -44,7 +44,7 @@
         <div>
             <label asp-for="CountryId">Country</label>
             <span asp-validation-for="CountryId" class="form_input_error_message"></span>
-            <select class="form-control" name="CountryId" asp-items="@ViewBag.Countries">
+            <select class="addEditForm_dd" name="CountryId" asp-items="@ViewBag.Countries">
                 <option>Select Country</option>
             </select>
             <br />

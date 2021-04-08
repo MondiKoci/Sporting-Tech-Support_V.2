@@ -268,3 +268,6 @@ D:\WebDev\A2\obj\Debug\net5.0\GBCSporting2021_TheDevelopers.genruntimeconfig.cac
 D:\WebDev\A2\obj\Debug\net5.0\Razor\Views\TechIncident\Edit.cshtml.g.cs
 D:\WebDev\A2\obj\Debug\net5.0\Razor\Views\TechIncident\GetIncidents.cshtml.g.cs
 D:\WebDev\A2\obj\Debug\net5.0\Razor\Views\TechIncident\GetTechnician.cshtml.g.cs
+D:\Code\Term 4\Web\Assignment2Final\Sporting-Tech-Support_V.2\obj\Debug\net5.0\Razor\Views\TechIncident\Edit.cshtml.g.cs
+D:\Code\Term 4\Web\Assignment2Final\Sporting-Tech-Support_V.2\obj\Debug\net5.0\Razor\Views\TechIncident\GetIncidents.cshtml.g.cs
+D:\Code\Term 4\Web\Assignment2Final\Sporting-Tech-Support_V.2\obj\Debug\net5.0\Razor\Views\TechIncident\GetTechnician.cshtml.g.cs

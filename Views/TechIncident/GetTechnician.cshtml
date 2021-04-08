@@ -1,15 +1,20 @@
-﻿@model IncidentListViewModel 
+﻿@model IncidentListViewModel
 @{
     ViewBag.Title = "Get Technician";
+    ViewBag.Heading = "Get Technician";
+    ViewBag.Desc = "Get Technician for Incident Update";
 }
 
-<form asp-action="GetIncidents" method="post">
-    <label>Technician</label>
-    
-    <select class="form-control" name="id" asp-items="@Model.TechnicianList">
-     <option>Select a Technician</option>
-    </select>
-    <br />
-
-    <button type="submit" class="btn btn-primary">Get Technician</button>
-</form>
+<div class="container">
+    <h2 class="subHeading">Technician / Update Incident</h2>
+    <div id="update_incident_technician_dropdown">
+        <form class="update_incident_technician products_registration" asp-action="GetIncidents" method="post">
+            <!-- Dynamic Product Dropdown -->
+            <span class="dd_error_message"></span> <!-- for Back end: Please modify the error message placeholder -->
+            <select name="products_registration" class="products_registration" name="id" asp-items="@Model.TechnicianList" required>
+                <option value="" disabled selected>Select technician</option>
+            </select>
+            <input class="fBtn" type="submit" value="Select"> <!-- input type double check -->
+        </form>
+    </div>
+</div>
