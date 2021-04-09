@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\maxpg\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\maxpg\\.nuget\\packages"
+      "C:\\Users\\Bristle\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Bristle\\.nuget\\packages"
     ]
   }
 }

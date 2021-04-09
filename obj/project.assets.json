@@ -5502,19 +5502,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\maxpg\\.nuget\\packages\\": {}
+    "C:\\Users\\Bristle\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\Term 4\\Web\\Assignment2Final\\Sporting-Tech-Support_V.2\\GBCSporting2021_TheDevelopers.csproj",
+      "projectUniqueName": "D:\\WebDev\\A2\\GBCSporting2021_TheDevelopers.csproj",
       "projectName": "GBCSporting2021_TheDevelopers",
-      "projectPath": "D:\\Code\\Term 4\\Web\\Assignment2Final\\Sporting-Tech-Support_V.2\\GBCSporting2021_TheDevelopers.csproj",
-      "packagesPath": "C:\\Users\\maxpg\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\Term 4\\Web\\Assignment2Final\\Sporting-Tech-Support_V.2\\obj\\",
+      "projectPath": "D:\\WebDev\\A2\\GBCSporting2021_TheDevelopers.csproj",
+      "packagesPath": "C:\\Users\\Bristle\\.nuget\\packages\\",
+      "outputPath": "D:\\WebDev\\A2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\maxpg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bristle\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5577,7 +5577,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
