@@ -24,7 +24,7 @@ namespace GBCSporting2021_TheDevelopers.Repositories
             return await context.Set<T>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<List<T>> GetAll()
         {
             return await context.Set<T>().ToListAsync();
         }
