@@ -5,7 +5,7 @@
     ViewBag.Desc = "Update a exsisting Incident";
 }
 <div class="container">
-    <form class="addEditForm" asp-action="" method="">
+    <form class="addEditForm" asp-action="Edit" method="post">
         <h2 class="subHeading">Edit Incident</h2> <!-- for Back end: Please modify error message placeholders -->
         <div class="grid-container">
             <label class="grid-item ed_label">Technician:      @Model.Incident.Technician.FirstName @Model.Incident.Technician.LastName</label>

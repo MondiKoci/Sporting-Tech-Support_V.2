@@ -5,7 +5,15 @@ using System.Threading.Tasks;
 
 namespace GBCSporting2021_TheDevelopers.IRepositories
 {
-    public class IGenericRepository
+    public interface IGenericRepository<T> where T : class
     {
+ 
+        Task<T> Get(int id);
+        Task<List<T>> GetAll();
+        void Insert(T entity);
+        Task<bool> Add(T entity);
+        bool Delete(T entity);
+        bool Update(T entity);
+        void Save();
     }
 }
