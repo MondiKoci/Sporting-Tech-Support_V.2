@@ -12,6 +12,7 @@ namespace GBCSporting2021_TheDevelopers.IRepositories
         IProductRepository Products { get; set; }
         IRegistrationRepository Registrations { get; set; }
         ITechnicianRepository Technicians { get; set; }
+        ICountryRepository Countries { get; set; }
         void Complete();
     }
 }

@@ -9,7 +9,7 @@ namespace GBCSporting2021_TheDevelopers.IRepositories
     {
  
         Task<T> Get(int id);
-        Task<IEnumerable<T>> GetAll();
+        Task<List<T>> GetAll();
         void Insert(T entity);
         Task<bool> Add(T entity);
         bool Delete(T entity);
