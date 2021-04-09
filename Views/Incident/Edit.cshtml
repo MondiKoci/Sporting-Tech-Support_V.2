@@ -12,14 +12,14 @@
     <div>
         <label asp-for="@Model.Incident.CustomerId">Customer</label>
         <span asp-validation-for="@Model.Incident.CustomerId" class="form_input_error_message"></span>
-        <select asp-for="@Model.Incident.CustomerId" class="form-control" asp-items="@Model.CustomerList">
+        <select asp-for="@Model.Incident.CustomerId" class="addEditForm_dd" asp-items="@Model.CustomerList">
             <option>Select a Customer</option>
         </select>
     </div>
     <div>
         <label asp-for="@Model.Incident.ProductId">Product</label>
         <span asp-validation-for="@Model.Incident.ProductId" class="form_input_error_message"></span>
-        <select asp-for="@Model.Incident.ProductId" class="form-control" asp-items="@Model.ProductList">
+        <select asp-for="@Model.Incident.ProductId" class="addEditForm_dd" asp-items="@Model.ProductList">
             <option value="">Select a Product</option>
         </select>
 
@@ -40,7 +40,7 @@
     <div class="form-group">
         <label asp-for="@Model.Incident.TechnicianId">Technician</label>
         <span asp-validation-for="@Model.Incident.TechnicianId" class="form_input_error_message"></span>
-        <select asp-for="@Model.Incident.TechnicianId" class="form-control" asp-items="@Model.TechnicianList">
+        <select asp-for="@Model.Incident.TechnicianId" class="addEditForm_dd" asp-items="@Model.TechnicianList">
             <option value="">Select a Technician</option>
         </select>
     </div>

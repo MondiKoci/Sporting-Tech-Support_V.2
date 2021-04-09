@@ -1,35 +1,37 @@
 ﻿@model IncidentViewModel
 @{
-    ViewBag.Title = "Edit Incident";
+    ViewBag.Title = "Update Incident";
+    ViewBag.Heading = " Update Incident";
+    ViewBag.Desc = "Update a exsisting Incident";
 }
-
-<form class="addEditForm" asp-action="Edit" method="post">
-    <h2 class="subHeading">Incident Information</h2>
-    <div>
-        <label>Technician:      @Model.Incident.Technician.FirstName @Model.Incident.Technician.LastName</label>
-        <input type="hidden" asp-for="Incident.TechnicianId" value="@Model.Incident.TechnicianId"/>
-        <label>Customer:        @Model.Incident.Customer.FirstName @Model.Incident.Customer.LastName</label>
-        <input type="hidden" asp-for="Incident.CustomerId" value="@Model.Incident.CustomerId"/>
-        <label>Product:         @Model.Incident.Product.Name</label>
-        <input type="hidden" asp-for="Incident.ProductId" value="@Model.Incident.ProductId" />
-        <label>Title:           @Model.Incident.Title</label>
-        <input type="hidden" asp-for="Incident.Title" value="@Model.Incident.Title"/>
-        <label>Date Opened:     @Model.Incident.DateOpened</label>
-        <input type="hidden" asp-for="Incident.DateOpened" value="@Model.Incident.DateOpened" />
-    </div>
-    <div>
+<div class="container">
+    <form class="addEditForm" asp-action="" method="">
+        <h2 class="subHeading">Edit Incident</h2> <!-- for Back end: Please modify error message placeholders -->
+        <div class="grid-container">
+            <label class="grid-item ed_label">Technician:      @Model.Incident.Technician.FirstName @Model.Incident.Technician.LastName</label>
+            <input class="grid-item ed_info" type="hidden" asp-for="Incident.TechnicianId" value="@Model.Incident.TechnicianId" />
+            <label class="grid-item ed_label">Customer:        @Model.Incident.Customer.FirstName @Model.Incident.Customer.LastName</label>
+            <input class="grid-item ed_info" type="hidden" asp-for="Incident.CustomerId" value="@Model.Incident.CustomerId" />
+            <label class="grid-item ed_label">Product:         @Model.Incident.Product.Name</label>
+            <input class="grid-item ed_info" type="hidden" asp-for="Incident.ProductId" value="@Model.Incident.ProductId" />
+            <label class="grid-item ed_label">Title:           @Model.Incident.Title</label>
+            <input class="grid-item ed_info" type="hidden" asp-for="Incident.Title" value="@Model.Incident.Title" />
+            <label class="grid-item ed_label">Date Opened:     @Model.Incident.DateOpened</label>
+            <input class="grid-item ed_info" type="hidden" asp-for="Incident.DateOpened" value="@Model.Incident.DateOpened" />
+        </div>
+        <div>
             <label asp-for="@Model.Incident.Description">Description</label>
-            <input asp-for="@Model.Incident.Description" />
-            <span asp-validation-for="@Model.Incident.Description" class="text-danger"></span>
-    </div>
-    <div>
+            <span asp-validation-for="@Model.Incident.Description" class="form_input_error_message"></span>
+            <textarea asp-for="@Model.Incident.Description" id="" rows="4"></textarea>
+        </div>
+        <div>
+     
             <label asp-for="@Model.Incident.DateClosed">Date Closed</label>
             <input type="text" id="DateClosed" asp-for="@Model.Incident.DateClosed" />
-    </div>
-
-    <div>
-        <input type="hidden" asp-for="@Model.Incident.IncidentId" />
-        <button class="fBtn" type="submit">Save</button>
-        <a class="fBtn" asp-action="RedirectIncidents" asp-route-id="@Model.Incident.TechnicianId">Cancel</a>
-    </div>
-</form>
+        </div>
+        <div>
+            <button class="fBtn" type="submit">Save</button>
+            <a class="cancelB" asp-action="RedirectIncidents" asp-route-id="@Model.Incident.TechnicianId">Cancel</a>
+        </div>
+    </form>
+</div>

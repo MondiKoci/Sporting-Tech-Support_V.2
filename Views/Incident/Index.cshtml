@@ -17,8 +17,7 @@
                     <a asp-action="index" asp-route-activeFilter="unassigned" class="ifb @Model.CheckFilter("unassigned")">Unassigned Incidents</a>
                     <a asp-action="index" asp-route-activeFilter="open" class="ifb  @Model.CheckFilter("open")">Open Incidents</a>
                 </div>
-
-
+                <div class="col-sm-2"></div>
                 <div id="addNewBtn" class="col-sm-2">
                     <a class="fBtn" asp-controller="Incident" asp-action="Add"><i class="fa fa-plus"></i> Add New</a>
                 </div>

@@ -1,35 +1,50 @@
 ﻿@model IncidentListViewModel
 @{
     ViewBag.Title = "List Incidents";
+    ViewBag.Heading = "List Incidents";
+    ViewBag.Desc = "List exsisting Incidents";
 }
 
-<label>Technician: @Model.Technician.FirstName @Model.Technician.LastName</label>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th class="font">Title</th>
-            <th class="font">Customer</th>
-            <th class="font">Product</th>
-            <th class="font">Date Opened</th>
-            <th class="font">Action</th>
-        </tr>
-    </thead>
+<div class="container">
+    <div id="registration_product_table">
+        
+        @if (Model.Incidents.Count > 0)
+        {
+        <h2 class="subHeading">Assigned / Open Incident</h2>
+        <p class="registration_customerName" id="rc_a">Technician:</p>
+        <p class="registration_customerName" id="rc_b">Technician: @Model.Technician.FirstName @Model.Technician.LastName</p> <!-- Dynamic Name -->
+        <span class="table_empty_message"></span> <!-- for Back end: this is the error message when table is null -->
+        <table class="table">
+            <!-- Dynamic Product Table -->
+            <thead>
+                <tr>
+                    <th class="font">Title</th>
+                    <th class="font">Customer</th>
+                    <th class="font">Product</th>
+                    <th class="font">Date Opened</th>
+                    <th class="font">Modify</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    <tbody>
-        @foreach(Incident incident in Model.Incidents)
-            {
-             <tr>
-                 <td>@incident.Title</td>
-                 <td>@incident.Customer.FirstName @incident.Customer.LastName</td>
-                 <td>@incident.Product.Name</td>
-                 <td>@incident.DateOpened</td>
-                 <td>
-                     <a class="btn btn-primary" asp-action="Edit" asp-route-id="@incident.IncidentId">Edit</a>
-                 </td>
-             </tr>
-            }
-    </tbody>
-</table>
-
-<a class="btn btn-primary" asp-action="GetTechnician">Switch Technician</a>
+              
+                @foreach (Incident incident in Model.Incidents)
+                {
+                    <tr>
+                        <td>@incident.Title</td>
+                        <td>@incident.Customer.FirstName @incident.Customer.LastName</td>
+                        <td>@incident.Product.Name</td>
+                        <td>@incident.DateOpened</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip" asp-action="Edit" asp-route-id="@incident.IncidentId"><i class="material-icons">&#xE254;</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </div>
+    <a class="fBtn stb" asp-action="GetTechnician">Switch Technician</a>
+</div>
+        
