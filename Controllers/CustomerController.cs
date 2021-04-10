@@ -2,40 +2,40 @@
 using System.Linq;
 using GBCSporting2021_TheDevelopers.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
-using System;
+using GBCSporting2021_TheDevelopers.IRepositories;
+using GBCSporting2021_TheDevelopers.Repositories;
 
 namespace GBCSporting2021_TheDevelopers.Controllers
 {
     public class CustomerController : Controller
     {
         private SportContext context;
-        private List<SelectListItem> CountriesList;
-        
-        public CustomerController(SportContext scx)
+        private IUnitOfWork unitOfWork;
+
+        public CustomerController(SportContext scx, IUnitOfWork uw)
         {
             context = scx;
-            CountriesList = context.Countries.OrderBy(c => c.Name).Select(c => new SelectListItem()
-            {
-                Value = c.CountryId.ToString(),
-                Text = c.Name
-            }).ToList();
+            unitOfWork = uw;
         }
         [Route("/customers")]
         public IActionResult Index()
         {
-            var customers = context.Customers
+            /*var customers = context.Customers
                 .OrderBy(c => c.FirstName)
-                .ToList();
-            return View(customers);
+                .ToList();*/
+
+            var customers2 = unitOfWork.Customers.GetAllCustomers();
+            return View(customers2);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
-            ViewBag.Countries = CountriesList;
+            //ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+            //ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
+            ViewBag.Countries = unitOfWork.Countries.GetAllCountries();
+            ViewBag.Products = unitOfWork.Products.GetAllProducts();
             return View("Edit", new Customer());
         }
 
@@ -43,8 +43,12 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         public IActionResult Edit(int id)
         {
             ViewBag.Action = "Edit";
-            ViewBag.Countries = CountriesList;
-            var customer = context.Customers.Find(id);
+            //ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
+            //ViewBag.Products = context.Products.OrderBy(p => p.Name).ToList();
+            ViewBag.Countries = unitOfWork.Countries.GetAllCountries();
+            ViewBag.Products = unitOfWork.Products.GetAllProducts();
+            //var customer = context.Customers.Find(id);
+            var customer = unitOfWork.Customers.GetCustomerById(id);
             return View(customer);
         }
 
@@ -53,36 +57,38 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         {
             if(customer.CustomerId == 0)
             {
-                //Check if email exists in the database;
-                if (TempData["okEmail"] == null)
+                if(TempData["okEmail"] == null)
                 {
                     string msg = Check.EmailExists(context, customer.Email);
-                    if (!String.IsNullOrEmpty(msg))
+                    if (!string.IsNullOrEmpty(msg))
                     {
                         ModelState.AddModelError(nameof(Customer.Email), msg);
                     }
                 }
             }
-            
+
             string action = customer.CustomerId == 0 ? "added" : "updated";
             string name = customer.FirstName + " " + customer.LastName;
+
             if (ModelState.IsValid)
             {
                 if (customer.CustomerId == 0)
                 {
-                    context.Customers.Add(customer);
+                    //context.Customers.Add(customer);
+                    unitOfWork.Customers.Add(customer);
                     TempData["actionClass"] = "large_div";
-
                 }
                 else
                 {
-                    context.Customers.Update(customer);
+                    //context.Customers.Update(customer);
+                    unitOfWork.Customers.Update(customer);
                 }
                 string[] alerts = Check.alertMessages(true, action, name, "customer");
                 TempData["actionClass"] = "large_div";
                 TempData["alertClass"] = alerts[0];
                 TempData["alertMessage"] = alerts[1];
-                context.SaveChanges();
+                //context.SaveChanges();
+                unitOfWork.Customers.Save();
                 return RedirectToAction("Index", "Customer");
             }
             else
@@ -95,11 +101,12 @@ namespace GBCSporting2021_TheDevelopers.Controllers
                 {
                     ViewBag.Action = "Edit";
                 }
+                //ViewBag.Countries = context.Countries.OrderBy(c => c.Name).ToList();
                 TempData["actionClass"] = "small_div";
                 string[] alerts = Check.alertMessages(false, action, name, "customer");
                 TempData["alertClass"] = alerts[0];
                 TempData["alertMessage"] = alerts[1];
-                ViewBag.Countries = CountriesList;
+                ViewBag.Countries = unitOfWork.Countries.GetAllCountries();
                 return View(customer);
             }
         }
@@ -108,9 +115,12 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         public IActionResult Delete(int id)
         {
             bool isValid = true;
-            var incidents = context.Incidents.Include(c => c.Customer).ToList();
-            Customer customer = context.Customers.Find(id);
-            ViewBag.Incidents = context.Incidents.Where(i => i.CustomerId == customer.CustomerId).ToList();
+            //var incidents = context.Incidents.Include(c => c.Customer).ToList();
+            var incidents = unitOfWork.Incidents.GetAllIncidents();
+            //Customer customer = context.Customers.Find(id);
+            Customer customer = unitOfWork.Customers.GetCustomerById(id);
+            //ViewBag.Incidents = context.Incidents.Where(i => i.CustomerId == customer.CustomerId).ToList();
+            ViewBag.Incidents = unitOfWork.Incidents.GetIncidentByCustomer(customer.CustomerId);
 
             foreach (Incident incident in incidents)
             {
@@ -136,7 +146,8 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         {
             string name = customer.FirstName + " " + customer.LastName;
             bool isValid = true;
-            var incidents = context.Incidents.Include(t => t.Customer).ToList();
+            //var incidents = context.Incidents.Include(t => t.Customer).ToList();
+            var incidents = unitOfWork.Incidents.GetAllIncidents();
             foreach (Incident incident in incidents)
             {
                 if (incident.CustomerId == customer.CustomerId)
@@ -146,8 +157,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             }
             if (isValid == true)
             {
-                context.Customers.Remove(customer);
-                context.SaveChanges();
+                //context.Customers.Remove(customer);
+                //context.SaveChanges();
+                unitOfWork.Customers.Delete(customer);
+                unitOfWork.Customers.Save();
                 string[] alerts = Check.alertMessages(true, "deleted", name, "customer");
                 TempData["alertClass"] = alerts[0];
                 TempData["alertMessage"] = alerts[1];
