@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GBCSporting2021_TheDevelopers.IRepositories;
+using GBCSporting2021_TheDevelopers.Repositories;
 
 namespace GBCSporting2021_TheDevelopers
 {
@@ -25,6 +27,13 @@ namespace GBCSporting2021_TheDevelopers
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<ITechnicianRepository, TechnicianRepository>();
+            services.AddTransient<IIncidentRepository, IncidentRepository>();
+            services.AddTransient<IRegistrationRepository, RegistrationRepository>();
+            services.AddTransient<ICountryRepository, CountryRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRouting(options =>
             {
