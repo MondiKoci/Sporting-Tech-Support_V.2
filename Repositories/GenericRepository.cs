@@ -19,6 +19,7 @@ namespace GBCSporting2021_TheDevelopers.Repositories
             dbset = context.Set<T>();
         }
 
+
         public async Task<T> Get(int id)
         {
             return await context.Set<T>().FindAsync(id);

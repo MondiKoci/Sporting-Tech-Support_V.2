@@ -16,5 +16,10 @@ namespace GBCSporting2021_TheDevelopers.Repositories
         {
             return context.Products.ToList();
         }
+
+        public Product GetProductById(int id)
+        {
+            return context.Products.Find(id);
+        }
     }
 }

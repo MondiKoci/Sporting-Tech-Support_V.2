@@ -21,5 +21,10 @@ namespace GBCSporting2021_TheDevelopers.Repositories
         {
             return context.Registrations.Where(r => r.CustomerId == id).ToList();
         }
+
+        public Registration GetRegistrationById(int id)
+        {
+            return context.Registrations.Find(id);
+        }
     }
 }
