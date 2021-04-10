@@ -22,7 +22,7 @@
         <div>
             <label asp-for="@Model.Incident.Description">Description</label>
             <span asp-validation-for="@Model.Incident.Description" class="form_input_error_message"></span>
-            <textarea asp-for="@Model.Incident.Description" id="" rows="4"></textarea>
+            <textarea asp-for="@Model.Incident.Description" rows="4"></textarea>
         </div>
         <div>
      
@@ -30,6 +30,7 @@
             <input type="text" id="DateClosed" asp-for="@Model.Incident.DateClosed" />
         </div>
         <div>
+            <input type="hidden" asp-for="@Model.Incident.IncidentId" />
             <button class="fBtn" type="submit">Save</button>
             <a class="cancelB" asp-action="RedirectIncidents" asp-route-id="@Model.Incident.TechnicianId">Cancel</a>
         </div>

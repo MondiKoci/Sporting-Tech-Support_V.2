@@ -97,6 +97,10 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             int techId = session.GetTechnician().TechnicianId;
             context.Incidents.Update(incident);
             context.SaveChanges();
+            string[] alerts = Check.alertMessages(true, "edit", "", "incident");
+            TempData["actionClass"] = "large_div";
+            TempData["alertClass"] = alerts[0];
+            TempData["alertMessage"] = alerts[1];
             return GetIncidents(techId);
         }
     }
