@@ -98,7 +98,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             context.Registrations.Add(new Registration {  ProductId = productId, CustomerId = customerId});
             context.SaveChanges();
 
-            string[] alerts = Check.alertMessages(true, "added", "", "product");
+            string[] alerts = Check.alertMessages(true, "registered", "", "product");
             TempData["actionClass"] = "large_div";
             TempData["alertClass"] = alerts[0];
             TempData["alertMessage"] = alerts[1];

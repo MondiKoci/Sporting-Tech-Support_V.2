@@ -48,6 +48,19 @@ namespace GBCSporting2021_TheDevelopers.Models
                     Province = "ON",
                     CountryId = 1,
                     Phone = "123-123-1234"
+                },
+                new Customer
+                {
+                    CustomerId = 3,
+                    FirstName = "Marie",
+                    LastName = "Moe",
+                    Email = "marie@email.com",
+                    Address = "111 Main street",
+                    PostalCode = "1M1 2M2",
+                    City = "Toronto",
+                    Province = "ON",
+                    CountryId = 1,
+                    Phone = "123-123-1234"
                 }
                 );
 
@@ -68,6 +81,15 @@ namespace GBCSporting2021_TheDevelopers.Models
                     Name = "Photoshop",
                     Price = 42.5,
                     ReleaseDate = new DateTime(2020, 01, 14)
+
+                },
+                new Product
+                {
+                    ProductId = 3,
+                    Code = "T1013",
+                    Name = "Illustrator",
+                    Price = 442.5,
+                    ReleaseDate = new DateTime(2019, 01, 14)
 
                 }
                 );
@@ -101,6 +123,36 @@ namespace GBCSporting2021_TheDevelopers.Models
                     TechnicianId = 1,
                     Description = "The key fell of the keyboard",
                     DateOpened = new DateTime(2019, 01, 14)
+                },
+                new Incident
+                {
+                    IncidentId = 2,
+                    Title = "Github Not Fun",
+                    CustomerId = 2,
+                    ProductId = 1,
+                    TechnicianId = 1,
+                    Description = "Git for Visual Studio is a pain",
+                    DateOpened = new DateTime(2019, 01, 14),
+                    DateClosed = new DateTime(2021, 01, 12)
+                },
+                new Incident
+                {
+                    IncidentId = 3,
+                    Title = "Orphan Incident",
+                    CustomerId = 2,
+                    ProductId = 1,
+                    Description = "This incident is an orphan",
+                    DateOpened = new DateTime(2019, 01, 14),
+                },
+                new Incident
+                {
+                    IncidentId = 4,
+                    Title = "Open Incident",
+                    CustomerId = 2,
+                    TechnicianId = 1,
+                    ProductId = 1,
+                    Description = "This incident is an open incident",
+                    DateOpened = new DateTime(2019, 01, 14),
                 }
                 );
             modelBuilder.Entity<Country>().HasData(

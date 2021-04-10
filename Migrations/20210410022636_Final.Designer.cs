@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GBCSporting2021_TheDevelopers.Migrations
 {
     [DbContext(typeof(SportContext))]
-    [Migration("20210405011252_initial")]
-    partial class initial
+    [Migration("20210410022636_Final")]
+    partial class Final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,7 +29,9 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.HasKey("CountryId");
 
@@ -67,37 +69,45 @@ namespace GBCSporting2021_TheDevelopers.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<int?>("CountryId")
                         .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostalCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
 
                     b.Property<string>("Province")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.HasKey("CustomerId");
 
@@ -131,6 +141,19 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                             Phone = "123-123-1234",
                             PostalCode = "1M1 2M2",
                             Province = "ON"
+                        },
+                        new
+                        {
+                            CustomerId = 3,
+                            Address = "111 Main street",
+                            City = "Toronto",
+                            CountryId = 1,
+                            Email = "marie@email.com",
+                            FirstName = "Marie",
+                            LastName = "Moe",
+                            Phone = "123-123-1234",
+                            PostalCode = "1M1 2M2",
+                            Province = "ON"
                         });
                 });
 
@@ -153,7 +176,8 @@ namespace GBCSporting2021_TheDevelopers.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int?>("ProductId")
                         .IsRequired()
@@ -164,7 +188,8 @@ namespace GBCSporting2021_TheDevelopers.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.HasKey("IncidentId");
 
@@ -186,6 +211,36 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Key Not Working"
+                        },
+                        new
+                        {
+                            IncidentId = 2,
+                            CustomerId = 2,
+                            DateClosed = new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOpened = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Git for Visual Studio is a pain",
+                            ProductId = 1,
+                            TechnicianId = 1,
+                            Title = "Github Not Fun"
+                        },
+                        new
+                        {
+                            IncidentId = 3,
+                            CustomerId = 2,
+                            DateOpened = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "This incident is an orphan",
+                            ProductId = 1,
+                            Title = "Orphan Incident"
+                        },
+                        new
+                        {
+                            IncidentId = 4,
+                            CustomerId = 2,
+                            DateOpened = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "This incident is an open incident",
+                            ProductId = 1,
+                            TechnicianId = 1,
+                            Title = "Open Incident"
                         });
                 });
 
@@ -202,7 +257,8 @@ namespace GBCSporting2021_TheDevelopers.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -230,6 +286,14 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                             Name = "Photoshop",
                             Price = 42.5,
                             ReleaseDate = new DateTime(2020, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            Code = "T1013",
+                            Name = "Illustrator",
+                            Price = 442.5,
+                            ReleaseDate = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -240,10 +304,12 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("RegistrationId");
@@ -278,15 +344,18 @@ namespace GBCSporting2021_TheDevelopers.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(51)
+                        .HasColumnType("nvarchar(51)");
 
                     b.Property<string>("Phone")
                         .IsRequired()

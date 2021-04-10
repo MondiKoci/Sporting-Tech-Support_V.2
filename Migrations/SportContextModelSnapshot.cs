@@ -139,6 +139,19 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                             Phone = "123-123-1234",
                             PostalCode = "1M1 2M2",
                             Province = "ON"
+                        },
+                        new
+                        {
+                            CustomerId = 3,
+                            Address = "111 Main street",
+                            City = "Toronto",
+                            CountryId = 1,
+                            Email = "marie@email.com",
+                            FirstName = "Marie",
+                            LastName = "Moe",
+                            Phone = "123-123-1234",
+                            PostalCode = "1M1 2M2",
+                            Province = "ON"
                         });
                 });
 
@@ -196,6 +209,36 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                             ProductId = 1,
                             TechnicianId = 1,
                             Title = "Key Not Working"
+                        },
+                        new
+                        {
+                            IncidentId = 2,
+                            CustomerId = 2,
+                            DateClosed = new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOpened = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Git for Visual Studio is a pain",
+                            ProductId = 1,
+                            TechnicianId = 1,
+                            Title = "Github Not Fun"
+                        },
+                        new
+                        {
+                            IncidentId = 3,
+                            CustomerId = 2,
+                            DateOpened = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "This incident is an orphan",
+                            ProductId = 1,
+                            Title = "Orphan Incident"
+                        },
+                        new
+                        {
+                            IncidentId = 4,
+                            CustomerId = 2,
+                            DateOpened = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "This incident is an open incident",
+                            ProductId = 1,
+                            TechnicianId = 1,
+                            Title = "Open Incident"
                         });
                 });
 
@@ -241,6 +284,14 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                             Name = "Photoshop",
                             Price = 42.5,
                             ReleaseDate = new DateTime(2020, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            Code = "T1013",
+                            Name = "Illustrator",
+                            Price = 442.5,
+                            ReleaseDate = new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

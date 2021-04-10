@@ -130,7 +130,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
         public IActionResult Edit(IncidentViewModel data)
         {
             string name = data.Incident.Title;
-            string action = data.Incident.IncidentId == 0 ? "added" : "deleted";
+            string action = data.Incident.IncidentId == 0 ? "added" : "edited";
             if (ModelState.IsValid)
             {
                 if (data.ActionPage == "Add")

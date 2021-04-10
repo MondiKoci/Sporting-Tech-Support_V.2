@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GBCSporting2021_TheDevelopers.Migrations
 {
-    public partial class initial : Migration
+    public partial class Final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                 {
                     CountryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,7 +27,7 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -42,9 +42,9 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                 {
                     TechnicianId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -58,13 +58,13 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                 {
                     CustomerId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Province = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    PostalCode = table.Column<string>(type: "nvarchar(21)", maxLength: 21, nullable: false),
+                    City = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    Province = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -85,8 +85,8 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                 {
                     IncidentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(51)", maxLength: 51, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DateOpened = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateClosed = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TechnicianId = table.Column<int>(type: "int", nullable: true),
@@ -159,7 +159,8 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                 values: new object[,]
                 {
                     { 1, "T1012", "Visual Studio Pro", 22.5, new DateTime(2020, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, "T1013", "Photoshop", 42.5, new DateTime(2020, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 2, "T1013", "Photoshop", 42.5, new DateTime(2020, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, "T1013", "Illustrator", 442.5, new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -182,19 +183,29 @@ namespace GBCSporting2021_TheDevelopers.Migrations
                 values: new object[] { 2, "11 Main street", "Toronto", 1, "jane@email.com", "Jane", "Doe", "123-123-1234", "1M1 2M2", "ON" });
 
             migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "CustomerId", "Address", "City", "CountryId", "Email", "FirstName", "LastName", "Phone", "PostalCode", "Province" },
+                values: new object[] { 3, "111 Main street", "Toronto", 1, "marie@email.com", "Marie", "Moe", "123-123-1234", "1M1 2M2", "ON" });
+
+            migrationBuilder.InsertData(
                 table: "Incidents",
                 columns: new[] { "IncidentId", "CustomerId", "DateClosed", "DateOpened", "Description", "ProductId", "TechnicianId", "Title" },
-                values: new object[] { 1, 1, null, new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "The key fell of the keyboard", 1, 1, "Key Not Working" });
+                values: new object[,]
+                {
+                    { 1, 1, null, new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "The key fell of the keyboard", 1, 1, "Key Not Working" },
+                    { 2, 2, new DateTime(2021, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Git for Visual Studio is a pain", 1, 1, "Github Not Fun" },
+                    { 3, 2, null, new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "This incident is an orphan", 1, null, "Orphan Incident" },
+                    { 4, 2, null, new DateTime(2019, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "This incident is an open incident", 1, 1, "Open Incident" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Registrations",
                 columns: new[] { "RegistrationId", "CustomerId", "ProductId" },
-                values: new object[] { 1, 1, 1 });
-
-            migrationBuilder.InsertData(
-                table: "Registrations",
-                columns: new[] { "RegistrationId", "CustomerId", "ProductId" },
-                values: new object[] { 2, 2, 1 });
+                values: new object[,]
+                {
+                    { 1, 1, 1 },
+                    { 2, 2, 1 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_CountryId",
