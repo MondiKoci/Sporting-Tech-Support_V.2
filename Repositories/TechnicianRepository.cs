@@ -16,5 +16,10 @@ namespace GBCSporting2021_TheDevelopers.Repositories
         {
             return context.Technicians.ToList();
         }
+
+        public Technician GetTechnicianById(int id)
+        {
+            return context.Technicians.Find(id);
+        }
     }
 }

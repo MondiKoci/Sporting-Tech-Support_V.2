@@ -13,7 +13,7 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             context = scx;
         }
 
-        [Route("/about")]
+        [Route("[action]")]
         public IActionResult About()
         {
             return View();

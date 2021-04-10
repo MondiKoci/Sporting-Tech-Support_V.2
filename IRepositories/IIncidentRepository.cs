@@ -8,6 +8,9 @@ namespace GBCSporting2021_TheDevelopers.IRepositories
         public List<Incident> GetUnassignedIncidents();
         public List<Incident> GetOpenIncidents();
         public List<Incident> GetIncidentsByTechnician(int id);
+
+        public List<Incident> GetIncidentByCustomer(int id);
+        public Incident GetIncidentById(int id);
     }
 
 }

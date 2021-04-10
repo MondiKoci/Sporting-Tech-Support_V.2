@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using GBCSporting2021_TheDevelopers.Repositories;
 namespace GBCSporting2021_TheDevelopers.IRepositories
 {
     public interface IGenericRepository<T> where T : class
     {
- 
-        Task<T> Get(int id);
         Task<List<T>> GetAll();
         void Insert(T entity);
         Task<bool> Add(T entity);

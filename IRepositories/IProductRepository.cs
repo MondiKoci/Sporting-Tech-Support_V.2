@@ -6,5 +6,6 @@ namespace GBCSporting2021_TheDevelopers.IRepositories
     public interface IProductRepository : IGenericRepository<Product>
     {
         public List<Product> GetAllProducts();
+        public Product GetProductById(int id);
     }
 }

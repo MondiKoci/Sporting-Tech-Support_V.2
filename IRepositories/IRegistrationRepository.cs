@@ -6,5 +6,6 @@ namespace GBCSporting2021_TheDevelopers.IRepositories
     {
         public List<Registration> GetAllRegistrations();
         public List<Registration> GetRegistrationsByCustomer(int id);
+        public Registration GetRegistrationById(int id);
     }
 }
