@@ -97,7 +97,11 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             
             context.Registrations.Add(new Registration {  ProductId = productId, CustomerId = customerId});
             context.SaveChanges();
-            TempData["message"] = "Registration added successfully";
+
+            string[] alerts = Check.alertMessages(true, "added", "", "product");
+            TempData["actionClass"] = "large_div";
+            TempData["alertClass"] = alerts[0];
+            TempData["alertMessage"] = alerts[1];
 
             return GetRegistrations(customerId);
         }
@@ -120,7 +124,11 @@ namespace GBCSporting2021_TheDevelopers.Controllers
             int customerId = session.GetCustomer().CustomerId;
             context.Registrations.Remove(reg);
             context.SaveChanges();
-            TempData["message"] = "Registration deleted successfully";
+
+            string[] alerts = Check.alertMessages(true, "deleted", "", "product");
+            TempData["actionClass"] = "large_div";
+            TempData["alertClass"] = alerts[0];
+            TempData["alertMessage"] = alerts[1];
             return GetRegistrations(customerId);
         }
 
